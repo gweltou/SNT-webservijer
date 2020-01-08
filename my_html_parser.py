@@ -4,7 +4,7 @@ import os.path
 import html
 
 
-ROOT_FOLDER = "."
+ROOT_FOLDER = "liseidi"
 
 pattern_title =     r"<title>(.+)</title>"
 pattern_author =    r"<meta\s+name\s*=\s*\"author\"\s+content\s*=\s*\"(.+)\"\s*>"
@@ -26,11 +26,29 @@ def list_files_in(directory):
     return list_files
 
 
+def list_files_by_subdirs(directory):
+    files = list_files_in(directory)
+    subdir = []
+    
+    dirname = ""
+    content = []
+    for f in files:
+        d = f.split(os.path.sep)[1]
+        if d != dirname:
+            if content: subdir.append(content)
+            content = [f]
+            dirname = d
+        else:
+            content.append(f)
+    
+    subdir.append(content)
+    
+    return subdir
+
 
 def parse_html_file(filename):
     d = dict()
     
-    print(filename)
     with open(filename, "r", encoding="latin-1") as f:
         text = f.read().strip()
     
@@ -65,27 +83,43 @@ def parse_html_file(filename):
 
 def update_page():
     pages = dict()
-    for f in list_files_in(ROOT_FOLDER):
-        pages[f] = parse_html_file(f)
+    group_of_files = list_files_by_subdirs(ROOT_FOLDER)
+    for files in group_of_files:
+        for f in files:
+            pages[f] = parse_html_file(f)
     
     text = "<!DOCTYPE html>\n"
     text += "<html>\n"
     text += "<head>\n"
     text += "<title>Pajenn degemer lec'hienn Web an eilveidi</title>\n"
     text += "<meta charset=\"UTF-8\">\n"
+    
+    text += "<style>\n"
+    text += ".summary {height: 580px; display:flex; flex-direction:column; flex-wrap:wrap;}\n"
+    text += ".column {width:280px;}\n"
+    text += "</style>\n"
+    
     text += "</head>\n"
     text += "<body lang=\"br\">\n"
     
     text += "<h1>Pajenn degemer</h1>\n"
-    text += "<h2>Pajenno&ugrave; eilveidi</h2>\n"
     
-    for f in sorted(pages):
-        text += f"<a href=\"{f}\">{pages[f]['title']}</a><br>\n"
+    text += "<div class='summary'>\n"
     
-    text += "<h2>Statistiko&ugrave;</h2>\n"
+    for files in group_of_files:
+        text += "<div class='column'>\n"
+        text += "<h2>" + files[0].split(os.path.sep)[1] + "</h3>\n"
+        for f in sorted(files):
+            text += f"<a href=\"{f}\">{pages[f]['title']}</a><br>\n"
+    
+        text += "</div>\n\n"
+    
+    text += "</div>\n"
+    
+    text += "<h1>Statistiko&ugrave;</h1>\n"
     text += "<table>\n"
     text += "<tr>\n"
-    text += "<th>Pajenn</th><th>Doctype</th><th>Framm HTML</th><th>Titl</th><th>Pennadoù</th><th>Gerioù</th><th>Skeudennoù</th><th>Hiperliammoù</th>\n"
+    text += "<th>URL</th><th>Doctype</th><th>Framm HTML</th><th>Titl</th><th>Pennadoù</th><th>Gerioù</th><th>Skeudennoù</th><th>Hiperliammoù</th>\n"
     text += "</tr>\n"
     
     for f in sorted(pages):
@@ -133,6 +167,7 @@ def update_page():
     
     with open("index.html", "w") as f_out:
         f_out.write(text)
+        print("Index.html file updated")
 
 
 if __name__ == "__main__":
