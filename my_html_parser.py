@@ -116,9 +116,13 @@ def update_page():
         text += "<div class='column'>\n"
         group_name = files[0].split(os.path.sep)[1]
         text += "<h2 class='group-title {}'>".format(group_name) + group_name + "</h3>\n"
+        text += "<ul>\n"
         for f in sorted(files):
-            text += f"<a class='page-title' href=\"{f}\">{pages[f]['title']}</a><br>\n"
-    
+            text += "<li>"
+            text += f"<a class='page-title' href=\"{f}\">{pages[f]['title']}</a><br>"
+            text += "</li>\n"
+        
+        text += "</ul>\n"
         text += "</div>\n\n"
     
     text += "</div>\n"
