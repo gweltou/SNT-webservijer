@@ -97,6 +97,12 @@ def update_page():
     text += "<style>\n"
     text += ".summary {height: 580px; display:flex; flex-direction:column; flex-wrap:wrap;}\n"
     text += ".column {width:280px;}\n"
+    text += ".gwenn1 {color:#112; background-color:#EEE;}\n"
+    text += ".gwenn2 {color:#121; background-color:#DDD;}\n"
+    text += ".ruz1 {color:#135; background-color:#E42;}\n"
+    text += ".ruz2 {color:#153; background-color:#E24;}\n"
+    text += ".du {color:#EEE; background-color:#111;}\n"
+    text += ".glas {background-color:#29E;}\n"
     text += "</style>\n"
     
     text += "</head>\n"
@@ -108,9 +114,10 @@ def update_page():
     
     for files in group_of_files:
         text += "<div class='column'>\n"
-        text += "<h2>" + files[0].split(os.path.sep)[1] + "</h3>\n"
+        group_name = files[0].split(os.path.sep)[1]
+        text += "<h2 class='group-title {}'>".format(group_name) + group_name + "</h3>\n"
         for f in sorted(files):
-            text += f"<a href=\"{f}\">{pages[f]['title']}</a><br>\n"
+            text += f"<a class='page-title' href=\"{f}\">{pages[f]['title']}</a><br>\n"
     
         text += "</div>\n\n"
     
