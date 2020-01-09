@@ -4,7 +4,7 @@ import os.path
 import html
 
 
-ROOT_FOLDER = "liseidi"
+ROOT_FOLDER = "pajennou"
 
 pattern_title =     r"<title>(.+)</title>"
 pattern_author =    r"<meta\s+name\s*=\s*\"author\"\s+content\s*=\s*\"(.+)\"\s*>"
@@ -95,14 +95,14 @@ def update_page():
     text += "<meta charset=\"UTF-8\">\n"
     
     text += "<style>\n"
-    text += ".summary {height: 580px; display:flex; flex-direction:column; flex-wrap:wrap;}\n"
-    text += ".column {width:280px;}\n"
-    text += ".gwenn1 {color:#112; background-color:#EEE;}\n"
-    text += ".gwenn2 {color:#121; background-color:#DDD;}\n"
-    text += ".ruz1 {color:#135; background-color:#E42;}\n"
-    text += ".ruz2 {color:#153; background-color:#E24;}\n"
+    text += ".summary {height: 800px; display:flex; flex-direction:column; flex-wrap:wrap;}\n"
+    text += ".column {width:300px;}\n"
+    text += ".gwenn1 {color:#222; background-color:#EEE;}\n"
+    text += ".gwenn2 {color:#222; background-color:#DDD;}\n"
+    text += ".ruz1 {color:#FFF; background-color:#E42;}\n"
+    text += ".ruz2 {color:#FFF; background-color:#E24;}\n"
     text += ".du {color:#EEE; background-color:#111;}\n"
-    text += ".glas {background-color:#29E;}\n"
+    text += ".glas {color:#FFF; background-color:#29E;}\n"
     text += "</style>\n"
     
     text += "</head>\n"
