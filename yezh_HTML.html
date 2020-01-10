@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Deski&ntilde; ar yezh HTML</title>
+    
+    <script type="text/javascript" src="w3codecolor.js"></script>
+    
+    <link rel=”stylesheet” href=”print.css” media=”print” />
+    <style>
+      p {
+        text-align:     justify;
+      }
+      
+      code {
+        font-size:      1.1em;
+      }
+      
+      .code-block {
+        font-family:    Consolas, monaco, monospace;
+        font-size:      0.9em;
+        white-space:    pre-wrap;
+        word-wrap:      break-word;
+      }
+      
+      table {
+        width:      100%;
+        
+      }
+      
+      tr {
+        border-left:    2px solid blue;
+      }
+      
+      td {
+        vertical-align:     top;
+        padding:        8px;
+        /*overflow: auto;*/
+      }
+      
+      td.code-rendered {
+        background:   #eee !important;
+        border-radius:  20px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <h1>Ar Yezh HTML [1/2]</h1>
+    <p>Ur bajenn Web a zo, da genta&ntilde; tout, un teuliad skrivet gant ar yezh HTML (HyperText Markup Language). Un teuliad HTML a rank kregi&ntilde; gant an talbenn <code class="htmlHigh">&lt;!DOCTYPE html&gt;</code> skrivet war al linenn kenta&ntilde;. An talbenn-se n'eo ket un elfenn HTML met servij a ra da gelaoui&ntilde; ar merdeer diwar benn furmat an titouroù a vo da heul.</p>
+    
+    <h2>Framm un teuliad HTML</h2>
+    <p>Setu un teuliad HTML eus ar re simpla&ntilde; a c'heller ober :</p>
+    <table>
+      <tr><td><code class="code-block htmlHigh">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Titl va bajenn&lt;/title&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    &lt;h1&gt;Un titl bras !&lt;/h1&gt;
+    &lt;p&gt;Va c'henta&ntilde; pennad-skrid war ar Web&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></td>
+      <td class="code-rendered">
+        <h1>Un titl bras !</h1>
+        <p>Va c'henta&ntilde; pennad-skrid war ar Web</p>
+      </td></tr>
+    </table>
+    
+    <p>Merzet o peus e oa aozet an titouroù en un doare hierarkiel ? Etre an elfennoù <code class="htmlHigh">&lt;head&gt;</code> ha <code class="htmlHigh">&lt;/head&gt;</code> e vez kavet ar "meta-data", titouroù kuzet met pouezus evit ar merdeer (titl ar bajenn da skouer). Etre an elfennoù <code class="htmlHigh">&lt;body&gt;</code> ha <code class="htmlHigh">&lt;/body&gt;</code> e vez lakaet tout ar pez a vo diskouezet war ar bajenn. An teuliad a-bez a zo bevenet etre an elfennoù <code class="htmlHigh">&lt;html&gt;</code> ha <code class="htmlHigh">&lt;/html&gt;</code>. Aesoc'h eo da lenn pa vez lakaet esaouennoù (<i>espaces</i>) e penn-kenta&ntilde; pep linenn evit diskouez al live hierakiel, memes ma n'eo ket rediet.</p>
+    <p>Evit kroui&ntilde; ar bajenn 'ma&ntilde; e vo ret deoc'h kopia&ntilde; ar pennad HTML a-us (gant an talbenn DOCTYPE) en un teuliad nevez gant "notepad" pe en meiziant testenn krai (<i>brut</i>) all. Dibabit un anv fichennaoueg a echu gant ".htm" pe ".html" ha digorit ar fichennaoueg en-dro gant ar merdeer evit gwelet ho pajenn Web.</p>
+    
+    <h2>Elfennoù HTML boutin</h2>
+    <p>An elfennoù HTML a zo eus ar stumm <code class="htmlHigh">&lt;elfenn&gt;</code>. Alies e vez bevenet an titouroù kavet war ar bajenn etre div elfenn HTML, evel se: <code class="htmlHigh">&lt;elfenn&gt;titour&lt;/elfenn&gt;</code>. An arouez '/' kavet en eil elfenn HTML a servij da kelaoui&ntilde; ez eo un elfenn kloza&ntilde;. Dibabet e vo an elfennoù HTML da implij hervez ar stumm ho peus c'hoant kinnig an titouroù war ar bajenn Web.</p>
+    
+    <h3>Pennadoù skrid</h3>
+    <table>
+      <tr><td><code class="code-block htmlHigh">&lt;p&gt;Ur pennad skrid&lt;/p&gt;
+&lt;p&gt;Un eil pennad skrid all&lt;/p&gt;
+&lt;p&gt;Un trede pennad skrid &lt;br&gt; gant ul &quot;lamm-linenn&quot;&lt;/p&gt;</code></td>
+      <td class="code-rendered">
+        <p>Ur pennad skrid</p>
+        <p>Un eil pennad skrid all</p>
+        <p>Un trede pennad skrid <br> gant ul "lamm-linenn"</p>
+      </td></tr>
+    </table>
+    
+    <h3>Titloù</h3>
+    <table>
+      <tr><td><code class="code-block htmlHigh">&lt;h1&gt;Ar brasa&ntilde; titl&lt;/h1&gt;
+&lt;h2&gt;Un titl bihanoc'h&lt;/h2&gt;
+&lt;h3&gt;Un titl bihanoc'h c'hoaz&lt;/h3&gt;
+&lt;h4&gt;Tu zo mont betek ar ment h6...&lt;/h4&gt;</code></td>
+      <td class="code-rendered">
+        <h1>Ar brasa&ntilde; titl</h1>
+        <h2>Un titl bihanoc'h</h2>
+        <h3>Un titl bihanoc'h c'hoaz</h3>
+        <h4>Tu zo mont betek ar ment h6...</h4>
+      </td></tr>
+    </table>
+    
+    <h3>Listennoù</h3>
+    <table>
+      <tr><td><code class="code-block htmlHigh">&lt;p&gt;Me a blij din :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Karotez&lt;/li&gt;
+  &lt;li&gt;Kokombrez&lt;/li&gt;
+  &lt;li&gt;Piz bihan&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ul listenn urzhiet :&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Mont gant ar metro&lt;/li&gt;
+  &lt;li&gt;Labourat&lt;/li&gt;
+  &lt;li&gt;Mont da gousket&lt;/li&gt;
+&lt;/ol&gt;</code></td>
+      <td class="code-rendered">
+        <p>Me a blij din :</p>
+        <ul>
+          <li>Karotez</li>
+          <li>Kokombrez</li>
+          <li>Piz bihan</li>
+        </ul>
+        <p>Ul listenn urzhiet :</p>
+        <ol>
+          <li>Mont gant ar metro</li>
+          <li>Labourat</li>
+          <li>Mont da gousket</li>
+        </ol>
+      </td></tr>
+    </table>
+    
+    <h3>Liammoù HyperText</h3>
+    <p>A-wechoù ez eus ezhomm rei&ntilde; titouroù ouzhpenn evit implij elfennoù HTML 'zo. Ar seurt titouroù-se, anvet "attribute" e saozneg, a za da-heul anv an elfenn html. Stummet e vezont evel-se : <code class="htmlHigh">&lt;elfenn name="value"&gt;</code><p>
+    <p>Evit kroui&ntilde; ul liamm hypertext e vez lakaet testenn (pe skeudenn) al liamm etre an elfennoù <code class="htmlHigh">&lt;a&gt;</code> ha <code class="htmlHigh">&lt;/a&gt;</code> ha roet e vez URL ar bajenn da liamma&ntilde; e barzh an elfenn kenta&ntilde;, gant an attribute <code class="htmlHigh">href</code>.</p>
+    <table>
+      <tr><td><code class="code-block htmlHigh">Klikit &lt;a href=&quot;https://www.w3schools.com&quot;&gt; ama&ntilde; &lt;/a&gt; evit deski&ntilde; pep tra war an HTML !</code></td>
+      <td class="code-rendered">
+        Klikit <a href="https://www.w3schools.com"> ama&ntilde; </a> evit deski&ntilde; pep tra war an HTML !
+      </td></tr>
+    </table>
+    
+    <h3>Skeudennoù</h3>
+    <p>Tu 'zo lakaat a bep seurt doare skeudenn war ur bajenn Web: .bmp (pouner), .jpg, .png (evit kaout ur fo&ntilde;s treuzwelus), .gif (skeudennoù bev)... Evit kaout URL ur skeudenn kavet war Internet, grit ur c'hlik-dehou war ar skeudenn ha dibabit "<i>copier l'adresse de l'image</i>". Gant an attribute <i>width</i> ha <i>height</i> e c'heller dibab ment ar skeudenn.</p>
+    <p>Diwallit d'an aotreoù pa gemeroc'h skeudennoù graet gant tud all war Internet. Na gemerit nemet skeudennoù gant ar gwir da adimplij (copyleft pe gwirioù "creative commons").</p>
+    
+    <table>
+      <tr><td><code class="code-block htmlHigh">&lt;img src=&quot;http://archive.fabacademy.org/2016/fablabtrivandrum/students/400/copyleft.gif&quot; width=&quot;238&quot; height=&quot;195&quot;&gt;</code></td>
+      <td class="code-rendered">
+        <img src="http://archive.fabacademy.org/2016/fablabtrivandrum/students/400/copyleft.gif" width="238" height="195">
+      </td></tr>
+    </table>
+    
+    <h3>Videoioù YouTube</h3>
+    <p>Aes eo enframma&ntilde; videoioù YouTube (hag ur bern mediaoù all), dre ma vez kinniget deoc'h kopia&ntilde; ar c'hod enframma&ntilde; pa vez kliket-dehou war ar video. N'ho peus nemet da pega&ntilde; ar c'hod war ho pajenn da c'houde.</p>
+    <table>
+      <tr><td><code class="code-block htmlHigh">&lt;iframe width=&quot;250&quot; height=&quot;250&quot; src=&quot;https://www.youtube.com/embed/6G9H0cwDrwI&quot;&gt;&lt;/iframe&gt;</code></td>
+      <td class="code-rendered">
+        <iframe width="250" height="250" src="https://www.youtube.com/embed/6G9H0cwDrwI"></iframe>
+      </td></tr>
+    </table>
+     
+    
+    <h3>Boutonoù (bonus)</h3>
+    <p>Alies e vez liammet ar fed klika&ntilde; war ur bouton gant ur fonksion skrivet gant ar yezh javascript evit kaout oberiadennoù dedenus. Ne vo ket desket javascript ar bloaz-ma&ntilde; siwaz met tu 'zo deoc'h kinklat ho pajenn gant boutonioù memes tra !</p>
+    
+    <table>
+      <tr><td><code class="code-block htmlHigh">&lt;button&gt;Ne ran nentra...&lt;/button&gt;&lt;br&gt;
+&lt;button onclick=&quot;window.alert('Gounezet o peus un Iphone 13 !')&quot;&gt;Klikit warnon&lt;/button&gt;&lt;br&gt;
+&lt;button onclick=&quot;window.open(window.location.href, '', 'width=280, height=200')&quot;&gt;Reducio !&lt;/button&gt;</code></td>
+      <td class="code-rendered">
+        <button>Ne ran nentra...</button><br>
+        <button onclick="window.alert('Gounezet o peus un Iphone 13 !')">Klikit warnon</button><br>
+        <button onclick="window.open(window.location.href, '', 'width=280, height=200')">Reducio !</button>
+      </td></tr>
+    </table>
+    
+    <h1>Ar Yezh HTML [2/2]</h1>
+    <h2>Un nebeut elfennoù HTML all</h2>
+    <h3>An taolennoù</h3>
+    
+    <h3>Python ninja</h3>
+    <code class="code-block pythonHigh">html = ""
+
+for i in range(80):
+    html += "&lt;tr&gt;"
+    for j in range(100):
+        html += "&lt;td&gt;&lt;/td&gt;"
+    
+    html += "&lt;/tr&gt;\n"
+
+f = open("tra.txt", "w")
+f.write(html)
+f.close()
+    </code>
+    <p>Petra 'ra ar c'hod Python a-us ?</p>
+    
+    <script>
+      w3CodeColor();
+    </script>
+  </body>
+</html>

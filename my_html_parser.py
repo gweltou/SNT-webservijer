@@ -119,7 +119,7 @@ def update_page():
         text += "<ul>\n"
         for f in sorted(files):
             text += "<li>"
-            text += f"<a class='page-title' href=\"{f}\">{pages[f]['title']}</a><br>"
+            text += f"<a class='page-title' href=\"{f}\" target='_blank'>{pages[f]['title']}</a><br>"
             text += "</li>\n"
         
         text += "</ul>\n"
