@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import re
 from os import walk
 import os.path
@@ -14,14 +16,28 @@ pattern_img =       r"<img\s(.+)>"
 pattern_a =         r"<a\s+.*href=\"(.+)\".*>.+</a>"
 
 
+HTML_HEADER = """
+<!DOCTYPE html>\n
+<html>\n
+<head>\n
+  <title>Pajenn degemer lec'hienn Web an eilveidi</title>\n
+  <meta charset=\"UTF-8\">\n
+  <link rel="stylesheet" type="text/css" href="index_style.css">
+</head>\n
+<body lang=\"br\">\n
+  
+  <h1>Pajenn degemer</h1>\n
+    
+  <div class='summary'>\n
+"""
+
 
 def list_files_in(directory):
     list_files = []
     
     for dirpath, dirnames, filenames in walk(directory):
         for filename in filenames:
-            if filename.lower().endswith(".html"):
-                list_files.append(os.path.join(dirpath, filename))
+            list_files.append(os.path.join(dirpath, filename))
     
     return list_files
 
@@ -88,44 +104,43 @@ def update_page():
         for f in files:
             pages[f] = parse_html_file(f)
     
-    text = "<!DOCTYPE html>\n"
-    text += "<html>\n"
-    text += "<head>\n"
-    text += "<title>Pajenn degemer lec'hienn Web an eilveidi</title>\n"
-    text += "<meta charset=\"UTF-8\">\n"
+    text = HTML_HEADER
     
-    text += "<style>\n"
-    text += ".summary {height: 800px; display:flex; flex-direction:column; flex-wrap:wrap;}\n"
-    text += ".column {width:300px;}\n"
-    text += ".gwenn1 {color:#222; background-color:#EEE;}\n"
-    text += ".gwenn2 {color:#222; background-color:#DDD;}\n"
-    text += ".ruz1 {color:#FFF; background-color:#E42;}\n"
-    text += ".ruz2 {color:#FFF; background-color:#E24;}\n"
-    text += ".du {color:#EEE; background-color:#111;}\n"
-    text += ".glas {color:#FFF; background-color:#29E;}\n"
-    text += "</style>\n"
-    
-    text += "</head>\n"
-    text += "<body lang=\"br\">\n"
-    
-    text += "<h1>Pajenn degemer</h1>\n"
-    
-    text += "<div class='summary'>\n"
-    
+    # Pajennoù liseidi
     for files in group_of_files:
         text += "<div class='column'>\n"
         group_name = files[0].split(os.path.sep)[1]
         text += "<h2 class='group-title {}'>".format(group_name) + group_name + "</h3>\n"
         text += "<ul>\n"
         for f in sorted(files):
+            if not f.lower().endswith(".html"):
+                continue
+            
             text += "<li>"
-            text += f"<a class='page-title' href=\"{f}\" target='_blank'>{pages[f]['title']}</a><br>"
+            text += f"<a class='page-title' href=\"{f}\" target=\"_blank\">{pages[f]['title']}</a><br>"
             text += "</li>\n"
         
         text += "</ul>\n"
         text += "</div>\n\n"
     
     text += "</div>\n"
+    
+    # Ostilhoù
+    text += """
+    <h1>Kentelioù</h1>
+    <ul>
+      <li><a href="yezh_HTML.html" target="_blank">Ar gentel HTML e brezhoneg</a></li>
+      <li><a href="CSS.html" target="_blank">Ar gentel CSS e brezhoneg</a></li>
+      <li>Evit mon pelloc'h gant HTML ha CSS (e saozneg) : <a href="https://www.w3schools.com/" target="_blank">www.w3school.com</a></li>
+    </ul>
+    <h1>Ostilhoù</h1>
+    <ul>
+      <li><a href="https://html5-editor.net/" target="_blank">html5-editor.net</a></li>
+      <li><a href="https://liveweave.com/" target="_blank">liveweave.com</a></li>
+      <li><a href="https://fonts.google.com/" target="_blank">Google Fonts</a></li>
+      <li>Evit dibab livio&ugrave; : <input type="color" id="html5colorpicker" onchange="clickColor(0, -1, -1, 5)" value="#FF9D00" style="width:120px;"></li>
+    </ul>
+    """
     
     text += "<h1>Statistiko&ugrave;</h1>\n"
     text += "<table>\n"

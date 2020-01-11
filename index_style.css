@@ -1,0 +1,44 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.summary {
+    max-height: 800px;
+    display:    flex;
+    flex-direction: column;
+    flex-wrap:  wrap;
+}
+
+.column {
+    width:  300px;
+}
+
+.gwenn1 {
+    color:  #222;
+    background-color:   #EEE;
+}
+
+.gwenn2 {
+    color:  #222;
+    background-color:   #DDD;
+}
+
+.ruz1 {
+    color:  #FFF;
+    background-color:   #E42;
+}
+
+.ruz2 {
+    color:  #FFF;
+    background-color:   #E24;
+}
+
+.du {
+    color:  #EEE;
+    background-color:   #111;
+}
+
+.glas {
+    color:  #FFF;
+    background-color:   #29E;
+}

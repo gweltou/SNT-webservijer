@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Deski&ntilde; ar yezh CSS</title>
+    
+    <script type="text/javascript" src="w3codecolor.js"></script>
+    
+    <link rel=”stylesheet” href=”print.css” media=”print” />
+    <style>
+      p {
+        text-align:     justify;
+      }
+      
+      code {
+        font-size:      1.1em;
+      }
+      
+      .code-block {
+        font-family:    Consolas, monaco, monospace;
+        font-size:      0.9em;
+        white-space:    pre-wrap;
+        word-wrap:      break-word;
+      }
+      
+      table {
+        width:      100%;
+        
+      }
+      
+      tr {
+        border-left:    2px solid blue;
+      }
+      
+      td {
+        vertical-align:     top;
+        padding:        8px;
+        /*overflow: auto;*/
+      }
+      
+      td.code-rendered {
+        background:   #eee !important;
+        border-radius:  20px;
+      }
+    </style>
+  </head>
+  
+  <body>
+<h1>Reolenno&ugrave; stumma&ntilde; CSS (Cascading Style Sheets)</h1>
+<h2>Enframma&ntilde; reolenno&ugrave; stil en ur bajenn HTML</h2>
+<h3>Enframma&ntilde; war-eeun en elfenno&ugrave; HTML</h3>
+<table>
+<tbody>
+<tr>
+<td><code class="code-block htmlHigh">&lt;p style="color: #FF0000;"&gt;Un destenn liv ruz&lt;/p&gt;</code></td>
+<td class="code-rendered">
+<p style="color: #ff0000;">Un destenn liv ruz</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Simpl a walac'h m'ho peus nemet un nebeut elfenno&ugrave; da kinkla&ntilde; met dibleustrek m'ho peus c'hoant stumma&ntilde; ur bern elfenno&ugrave; HTML...</p>
+<h3>Reolenno&ugrave; CSS e penn kenta&ntilde; an teuliad HTML</h3>
+<p>Ret e vo ouzphenna&ntilde; ur rann nevez <code class="htmlHigh">&lt;style&gt;...&lt;/style&gt;</code> e-barzh ar rann <code class="htmlHigh">&lt;head&gt;...&lt;/head&gt;</code> e penn kenta&ntilde; ar bajenn. Ar reolenno&ugrave; CSS a vo lakaet etre <code class="htmlHigh">&lt;style&gt;</code> ha <code class="htmlHigh">&lt;/style&gt;</code></p>
+<table>
+<tbody>
+<tr>
+<td><code class="code-block htmlHigh">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;style&gt;
+      h1 {color: #00FF00;}
+      p {
+        color: #0000FF;
+        font-style: italic;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  
+  &lt;body&gt;
+    &lt;h1&gt;Un titl gwer&lt;/h1&gt;
+    &lt;p&gt;Ur pennad skrid liv glas hag italik&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></td>
+<td class="code-rendered">
+<h1 style="color: #00ff00;">Un titl gwer</h1>
+<p style="color: #0000ff; font-style: italic;">Ur pennad skrid liv glas hag italik</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Reolenno&ugrave; CSS en ur fichennaoueg diavaez</h3>
+<p>An doare boutin. Dispartiet e vez ar stil eus an da&ntilde;vez penn-da-benn. Aesoc'h eo neuze ranna&ntilde; reolenno&ugrave; CSS etre meur a bajenn pe eskemm stil etre lec'hienno&ugrave; Web dishe&ntilde;vel.</p>
+<p>Ret eo kroui&ntilde; ur fichennaoueg nevez gant an "extension" .css (da skouer: "stil_va_bajenn.css") ha skriva&ntilde; tout a reolenno&ugrave; CSS e-barzh.</p>
+<p>Staget e vo ar fichennaoueg CSS (ar "folenn stil") ouzh an teuliad HTML en ur lakaat un elfenn nevez <code class="htmlHigh">&lt;link&gt;</code> e-barzh ar rann <code class="htmlHigh">&lt;head&gt;...&lt;/head&gt;</code></p>
+<p><code class="code-block htmlHigh">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel="stylesheet" type="text/css" href="stil_va_bajenn.css"&gt;
+  &lt;/head&gt;
+  ...
+&lt;/html&gt;</code></p>
+<h2>Dibab an elfenno&ugrave; HTML da stumma&ntilde;</h2>
+<h3>Dre doare elfenn</h3>
+<p><code class="code-block cssHigh">h1  {
+  color: #3888FF;
+  font-size: 54px;
+}</code></p>
+<p>Tout an elfenno&ugrave; titl <code class="htmlHigh">&lt;h1&gt;...&lt;/h1&gt;</code> eus ar bajenn a vo skoget gant ar reolenn-ma&ntilde;.</p>
+<h3>Dre "id"</h3>
+<code class="code-block cssHigh">#skeud  {
+  box-shadow: 4px 4px 6px #A0A0A0;
+}</code>
+<p>An elfenn HTML nemeta&ntilde; gant an "attribut" <code>id="skeud"</code> a vo skoget (ur skeud griz a vo livet dindan).</p>
+<p>Da skouer : <code class="htmlHigh">&lt;img id="skeud" src="url_ur_skeudenn"&gt;</code></p>
+<h3>Dre "class"</h3>
+<code class="code-block cssHigh">.e-kreiz {
+  text-align: center;
+}</code>
+<p>Tout an elfenno&ugrave; HTML gant an "attribut" <code>class="e-kreiz"</code> a vo skoget (kreizenet an testenno&ugrave;).</p>
+<p>Da skouer :</p>
+<code class="code-block htmlHigh">&lt;p class="e-kreiz"&gt;Un testenn kreizennet&lt;/p&gt;
+&lt;h2 class="e-kreiz"&gt;Un titl kreizennet&lt;/h2&gt;</code>
+<h2>Un nebeut reolennoù CSS eus a re dedennusa&ntilde;</h2>
+    
+    <script>
+      w3CodeColor();
+    </script>
+  </body>
+</html>
