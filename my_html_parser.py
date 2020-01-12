@@ -17,18 +17,20 @@ pattern_a =         r"<a\s+.*href=\"(.+)\".*>.+</a>"
 
 
 HTML_HEADER = """
-<!DOCTYPE html>\n
-<html>\n
-<head>\n
-  <title>Pajenn degemer lec'hienn Web an eilveidi</title>\n
-  <meta charset=\"UTF-8\">\n
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Pajenn degemer lec'hienn Web an eilveidi</title>
+  <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="index_style.css">
-</head>\n
-<body lang=\"br\">\n
-  
-  <h1>Pajenn degemer</h1>\n
-    
-  <div class='summary'>\n
+</head>
+<body lang="br">
+  <div id="upload-container">
+    <a href="#" id="upload-link" target="_blank"><img src="images/upload.png" width="64"></a><span style="/*! vertical-align:middle; */ max-width:70px;display: inline-block;bottom: 5px;position: relative;text-align: center;">Pellgas ur bajenn</span></a>
+  </div>
+  <h1>Pajenno&ugrave;</h1>
+  <div class='summary'>
 """
 
 
@@ -129,7 +131,7 @@ def update_page():
     text += """
     <h1>Kentelioù</h1>
     <ul>
-      <li><a href="yezh_HTML.html" target="_blank">Ar gentel HTML e brezhoneg</a></li>
+      <li><a href="HTML.html" target="_blank">Ar gentel HTML e brezhoneg</a></li>
       <li><a href="CSS.html" target="_blank">Ar gentel CSS e brezhoneg</a></li>
       <li>Evit mon pelloc'h gant HTML ha CSS (e saozneg) : <a href="https://www.w3schools.com/" target="_blank">www.w3school.com</a></li>
     </ul>
@@ -162,7 +164,7 @@ def update_page():
         text += "<tr>\n"
         if f.lower().endswith(".html"):
             text += "<td>"
-            text += f"<a href=\"{f}\">"
+            text += f"<a href=\"{f}\" download>"
             text += html.escape(f)
             text += "</a></td>\n"
         else:
@@ -196,9 +198,15 @@ def update_page():
         
         text += "</tr>\n"
     
-    text += "</table>\n"
-    text += "</body>\n"
-    text += "</html>"
+    text += """
+    </table>
+    
+    <script type="application/javascript">
+      document.getElementById('upload-link').href = "http://" + document.domain + ":8000/";
+    </script>
+  </body>
+</html>
+"""
     
     with open("index.html", "w") as f_out:
         f_out.write(text)
