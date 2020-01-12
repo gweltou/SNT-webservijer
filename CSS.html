@@ -41,6 +41,11 @@
         background:   #eee !important;
         border-radius:  20px;
       }
+      
+      .zoom:hover {
+        transform: scale(2, 2);
+        transition: 1s;
+      }
     </style>
   </head>
   
@@ -49,14 +54,12 @@
 <h2>Enframma&ntilde; reolenno&ugrave; stil en ur bajenn HTML</h2>
 <h3>Enframma&ntilde; war-eeun en elfenno&ugrave; HTML</h3>
 <table>
-<tbody>
 <tr>
 <td><code class="code-block htmlHigh">&lt;p style="color: #FF0000;"&gt;Un destenn liv ruz&lt;/p&gt;</code></td>
 <td class="code-rendered">
 <p style="color: #ff0000;">Un destenn liv ruz</p>
 </td>
 </tr>
-</tbody>
 </table>
 <p>Simpl a walac'h m'ho peus nemet un nebeut elfenno&ugrave; da kinkla&ntilde; met dibleustrek m'ho peus c'hoant stumma&ntilde; ur bern elfenno&ugrave; HTML...</p>
 <h3>Reolenno&ugrave; CSS e penn kenta&ntilde; an teuliad HTML</h3>
@@ -120,8 +123,91 @@
 <p>Da skouer :</p>
 <code class="code-block htmlHigh">&lt;p class="e-kreiz"&gt;Un destenn kreizennet&lt;/p&gt;
 &lt;h2 class="e-kreiz"&gt;Un titl kreizennet&lt;/h2&gt;</code>
+
+<h2>Unanenno&ugrave; ar CSS</h2>
+<h3>Mento&ugrave;</h3>
+<p>E pixels (da skouer: 5px)</p>
+<p>E tregantad (da skouer: 50%)</p>
+<p>E kantimetrad (da skouer: 0.5cm)</p>
+<h3>Livio&ugrave;</h3>
+<p>E stumm hexadecimal, o kregi&ntilde; gant # hag gant 6 arouez da-heul (da skouer: #FFA309)</p>
+<p>Gant ar fonksion rgb(0, 255, 0)</p>
+<p>Livioù treuzvelus gant ar fonksion rgba(0, 255, 0, 0.5)</p>
+<h3>fichennaouego&ugrave;</h3>
+<p>Gant ar fonksion url("<i>url_ur_fichennaoueg</i>")</p>
+
 <h2>Un nebeut reolennoù CSS eus a re dedennusa&ntilde;</h2>
-    
+<table>
+<tr>
+  <th>Attribut</th><th>Params</th><th>Disoc'h</th>
+</tr><tr>
+  <td>width</td><td>(ur ment)</td><td>Ledander an elfenn</td>
+</tr><tr>
+  <td>height</td><td>(ur ment)</td><td>Hirder an elfenn</td>
+</tr>
+  <td>color</td><td>(ul liv)</td><td>Liv ar skritur</td>
+</tr><tr>
+  <td>background-color</td><td>(ul liv)</td><td>Liv fo&ntilde;s an elfenn</td>
+</tr><tr>
+  <td>background-image</td><td>url("...")</td><td>Lakaat ur skeudenn e fo&ntilde;s un elfenn</td>
+</tr><tr>
+  <td>border-color</td><td>(ul liv)</td><td>Liv bord an elfenn</td>
+</tr><tr>
+  <td>border-width</td><td>(ur ment)</td><td>Tevder bord an elfenn</td>
+</tr><tr>
+  <td>border-radius</td><td>(ur ment)</td><td>Rontat kornio&ugrave; an elfenn</td>
+</tr><tr>
+  <td>text-align</td><td>center | left | right | justify</td><td>Skweraj an destenn</td>
+</tr><tr>
+  <td>vertical-align</td><td>baseline | bottom | middle | top</td><td>Skweraj a-blom an elfenn</td>
+</tr><tr>
+  <td>font-family</td><td>(anv ur skritur)</td><td>Doare skritur</td>
+</tr><tr>
+  <td>font-size</td><td>(ur ment)</td><td>Ment ar skritur</td>
+</tr><tr>
+  <td>font-style</td><td>normal | italic</td><td>Stil ar skritur</td>
+</tr><tr>
+  <td>text-shadow</td><td>(ment ment ment liv)</td><td>Skeud dindan an destenn</td>
+</tr><tr>
+  <td>box-shadow</td><td>(ment ment ment liv)</td><td>Skeud dindan un elfenn</td>
+</tr><tr>
+  <td>transform</td><td>rotate(deg) | scale(x, y) | translate(x, y)</td><td>Trusfurmadur mentoniezh</td>
+</tr>
+</table>
+
+<h2>Skouerio&ugrave; ouzhpenn</h2>
+<p>Kreizenna&ntilde; an holl skeudenno&ugrave; :</p>
+<code class="code-block cssHigh">img {
+  margin: auto;
+}</code>
+<p>Brasaat elfenno&ugrave; eus ar c'hlass "zoom" pa vez lakaet kurseur al logodenn warno :</p>
+<code class="code-block cssHigh">.zoom:hover {
+  transform: scale(2, 2);
+  transition: 1s;
+}</code>
+<table>
+<tr>
+<td><code class="code-block htmlHigh">&lt;img class="zoom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Emoji_u1f64b.svg/128px-Emoji_u1f64b.svg.png"&gt;</code></td>
+<td class="code-rendered">
+<img class="zoom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Emoji_u1f64b.svg/128px-Emoji_u1f64b.svg.png">
+</td>
+</tr>
+</table>
+<p>Lakaat ur skeud dindan un destenn :</p>
+<table>
+<tr>
+<td><code class="code-block htmlHigh">&lt;h1 style="text-shadow: 4px 4px 6px #AA22BB;"&gt;SKEUD&lt;/h1&gt;</code></td>
+<td class="code-rendered">
+<h1 style="text-shadow: 4px 4px 6px #AA22BB;">SKEUD</h1>
+</td>
+</tr>
+</table>
+
+<h2>Mammenoù all evit deski&ntilde; ar CSS</h2>
+<ul>
+<li><a href="https://www.w3schools.com/cssref/">www.w3schools.com/cssref</a></li>
+</ul>
+
     <script>
       w3CodeColor();
     </script>
