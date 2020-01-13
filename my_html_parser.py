@@ -141,7 +141,7 @@ def update_page():
       <li><a href="https://liveweave.com/" target="_blank">liveweave.com</a></li>
       <li><a href="https://fonts.google.com/" target="_blank">Google Fonts</a></li>
       <li>Evit dibab livio&ugrave; : <input type="color" id="html5colorpicker" onchange="clickColor(0, -1, -1, 5)" value="#FF9D00" style="width:120px;"></li>
-      <li><a id="kaoz-link" href="#">Kaoz (Chat lec'hel enlinenn)</a></li>
+      <li><a id="kaoz-link" href="#" target="_blank">Kaoz (Chat lec'hel enlinenn home-made)</a></li>
     </ul>
     """
     
