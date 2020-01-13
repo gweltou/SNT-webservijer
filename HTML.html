@@ -22,16 +22,16 @@
         word-wrap:      break-word;
       }
       
-      table {
+      .code-table {
         width:      100%;
         
       }
       
-      tr {
+      .code-table tr {
         border-left:    2px solid blue;
       }
       
-      td {
+      .code-table td {
         vertical-align:     top;
         padding:        8px;
         /*overflow: auto;*/
@@ -50,7 +50,7 @@
     
     <h2>Framm un teuliad HTML</h2>
     <p>Setu un teuliad HTML eus ar re simpla&ntilde; a c'heller ober :</p>
-    <table>
+    <table class="code-table">
       <tr><td><code class="code-block htmlHigh">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -75,7 +75,7 @@
     <p>An elfennoù HTML a zo eus ar stumm <code class="htmlHigh">&lt;elfenn&gt;</code>. Alies e vez bevenet an titouroù kavet war ar bajenn etre div elfenn HTML, evel se: <code class="htmlHigh">&lt;elfenn&gt;titour&lt;/elfenn&gt;</code>. An arouez '/' kavet en eil elfenn HTML a servij da kelaoui&ntilde; ez eo un elfenn kloza&ntilde;. Dibabet e vo an elfennoù HTML da implij hervez ar stumm ho peus c'hoant kinnig an titouroù war ar bajenn Web.</p>
     
     <h3>Pennadoù skrid</h3>
-    <table>
+    <table class="code-table">
       <tr><td><code class="code-block htmlHigh">&lt;p&gt;Ur pennad skrid&lt;/p&gt;
 &lt;p&gt;Un eil pennad skrid all&lt;/p&gt;
 &lt;p&gt;Un trede pennad skrid &lt;br&gt; gant ul &quot;lamm-linenn&quot;&lt;/p&gt;</code></td>
@@ -87,7 +87,7 @@
     </table>
     
     <h3>Titloù</h3>
-    <table>
+    <table class="code-table">
       <tr><td><code class="code-block htmlHigh">&lt;h1&gt;Ar brasa&ntilde; titl&lt;/h1&gt;
 &lt;h2&gt;Un titl bihanoc'h&lt;/h2&gt;
 &lt;h3&gt;Un titl bihanoc'h c'hoaz&lt;/h3&gt;
@@ -101,7 +101,7 @@
     </table>
     
     <h3>Listennoù</h3>
-    <table>
+    <table class="code-table">
       <tr><td><code class="code-block htmlHigh">&lt;p&gt;Me a blij din :&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Karotez&lt;/li&gt;
@@ -133,7 +133,7 @@
     <h3>Liammoù HyperText</h3>
     <p>A-wechoù ez eus ezhomm rei&ntilde; titouroù ouzhpenn evit implij elfennoù HTML 'zo. Ar seurt titouroù-se, anvet "attribute" e saozneg, a za da-heul anv an elfenn html. Stummet e vezont evel-se : <code class="htmlHigh">&lt;elfenn name="value"&gt;</code><p>
     <p>Evit kroui&ntilde; ul liamm hypertext e vez lakaet testenn (pe skeudenn) al liamm etre an elfennoù <code class="htmlHigh">&lt;a&gt;</code> ha <code class="htmlHigh">&lt;/a&gt;</code> ha roet e vez URL ar bajenn da liamma&ntilde; e barzh an elfenn kenta&ntilde;, gant an attribute <code class="htmlHigh">href</code>.</p>
-    <table>
+    <table class="code-table">
       <tr><td><code class="code-block htmlHigh">Klikit &lt;a href=&quot;https://www.w3schools.com&quot;&gt; ama&ntilde; &lt;/a&gt; evit deski&ntilde; pep tra war an HTML !</code></td>
       <td class="code-rendered">
         Klikit <a href="https://www.w3schools.com"> ama&ntilde; </a> evit deski&ntilde; pep tra war an HTML !
@@ -144,7 +144,7 @@
     <p>Tu 'zo lakaat a bep seurt doare skeudenn war ur bajenn Web: .bmp (pouner), .jpg, .png (evit kaout ur fo&ntilde;s treuzwelus), .gif (skeudennoù bev)... Evit kaout URL ur skeudenn kavet war Internet, grit ur c'hlik-dehou war ar skeudenn ha dibabit "<i>copier l'adresse de l'image</i>". Gant an attribute <i>width</i> ha <i>height</i> e c'heller dibab ment ar skeudenn.</p>
     <p>Diwallit d'an aotreoù pa gemeroc'h skeudennoù graet gant tud all war Internet. Na gemerit nemet skeudennoù gant ar gwir da adimplij (copyleft pe gwirioù "creative commons").</p>
     
-    <table>
+    <table class="code-table">
       <tr><td><code class="code-block htmlHigh">&lt;img src=&quot;http://archive.fabacademy.org/2016/fablabtrivandrum/students/400/copyleft.gif&quot; width=&quot;238&quot; height=&quot;195&quot;&gt;</code></td>
       <td class="code-rendered">
         <img src="http://archive.fabacademy.org/2016/fablabtrivandrum/students/400/copyleft.gif" width="238" height="195">
@@ -153,7 +153,7 @@
     
     <h3>Videoioù YouTube</h3>
     <p>Aes eo enframma&ntilde; videoioù YouTube (hag ur bern mediaoù all), dre ma vez kinniget deoc'h kopia&ntilde; ar c'hod enframma&ntilde; pa vez kliket-dehou war ar video. N'ho peus nemet da pega&ntilde; ar c'hod war ho pajenn da c'houde.</p>
-    <table>
+    <table class="code-table">
       <tr><td><code class="code-block htmlHigh">&lt;iframe width=&quot;250&quot; height=&quot;250&quot; src=&quot;https://www.youtube.com/embed/6G9H0cwDrwI&quot;&gt;&lt;/iframe&gt;</code></td>
       <td class="code-rendered">
         <iframe width="250" height="250" src="https://www.youtube.com/embed/6G9H0cwDrwI"></iframe>
@@ -164,7 +164,7 @@
     <h3>Boutonoù (bonus)</h3>
     <p>Alies e vez liammet ar fed klika&ntilde; war ur bouton gant ur fonksion skrivet gant ar yezh javascript evit kaout oberiadennoù dedenus. Ne vo ket desket javascript ar bloaz-ma&ntilde; siwaz met tu 'zo deoc'h kinklat ho pajenn gant boutonioù memes tra !</p>
     
-    <table>
+    <table class="code-table">
       <tr><td><code class="code-block htmlHigh">&lt;button&gt;Ne ran nentra...&lt;/button&gt;&lt;br&gt;
 &lt;button onclick=&quot;window.alert('Gounezet o peus un Iphone 13 !')&quot;&gt;Klikit warnon&lt;/button&gt;&lt;br&gt;
 &lt;button onclick=&quot;window.open(window.location.href, '', 'width=280, height=200')&quot;&gt;Reducio !&lt;/button&gt;</code></td>
@@ -178,8 +178,6 @@
     <h2>Un nebeut elfennoù HTML all</h2>
     <h3>An taolennoù</h3>
     
-    <code class="code-block htmlHigh"</code></td>
-      <td class="code-rendered">
       <table>
         <tr>
           <td>A</td><td>B</td>

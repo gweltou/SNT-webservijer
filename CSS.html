@@ -22,16 +22,16 @@
         word-wrap:      break-word;
       }
       
-      table {
+      .code-table {
         width:      100%;
         
       }
       
-      tr {
+      .code-table tr {
         border-left:    2px solid blue;
       }
       
-      td {
+      .code-table td {
         vertical-align:     top;
         padding:        8px;
         /*overflow: auto;*/
@@ -53,7 +53,7 @@
 <h1>Reolenno&ugrave; stumma&ntilde; CSS (Cascading Style Sheets)</h1>
 <h2>Enframma&ntilde; reolenno&ugrave; stil en ur bajenn HTML</h2>
 <h3>Enframma&ntilde; war-eeun en elfenno&ugrave; HTML</h3>
-<table>
+<table class="code-table">
 <tr>
 <td><code class="code-block htmlHigh">&lt;p style="color: #FF0000;"&gt;Un destenn liv ruz&lt;/p&gt;</code></td>
 <td class="code-rendered">
@@ -62,10 +62,10 @@
 </tr>
 </table>
 <p>Simpl a walac'h m'ho peus nemet un nebeut elfenno&ugrave; da kinkla&ntilde; met dibleustrek m'ho peus c'hoant stumma&ntilde; ur bern elfenno&ugrave; HTML...</p>
+
 <h3>Reolenno&ugrave; CSS e penn kenta&ntilde; an teuliad HTML</h3>
 <p>Ret e vo ouzphenna&ntilde; ur rann nevez <code class="htmlHigh">&lt;style&gt;...&lt;/style&gt;</code> e-barzh ar rann <code class="htmlHigh">&lt;head&gt;...&lt;/head&gt;</code> e penn kenta&ntilde; ar bajenn. Ar reolenno&ugrave; CSS a vo lakaet etre <code class="htmlHigh">&lt;style&gt;</code> ha <code class="htmlHigh">&lt;/style&gt;</code></p>
-<table>
-<tbody>
+<table class="code-table">
 <tr>
 <td><code class="code-block htmlHigh">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -89,8 +89,8 @@
 <p style="color: #0000ff; font-style: italic;">Ur pennad skrid liv glas hag italik</p>
 </td>
 </tr>
-</tbody>
 </table>
+
 <h3>Reolenno&ugrave; CSS en ur fichennaoueg diavaez</h3>
 <p>An doare boutin. Dispartiet e vez ar stil eus an da&ntilde;vez penn-da-benn. Aesoc'h eo neuze ranna&ntilde; reolenno&ugrave; CSS etre meur a bajenn pe eskemm stil etre lec'hienno&ugrave; Web dishe&ntilde;vel.</p>
 <p>Ret eo kroui&ntilde; ur fichennaoueg nevez gant an "extension" .css (da skouer: "stil_va_bajenn.css") ha skriva&ntilde; tout a reolenno&ugrave; CSS e-barzh.</p>
@@ -129,15 +129,17 @@
 <p>E pixels (da skouer: 5px)</p>
 <p>E tregantad (da skouer: 50%)</p>
 <p>E kantimetrad (da skouer: 0.5cm)</p>
+
 <h3>Livio&ugrave;</h3>
 <p>E stumm hexadecimal, o kregi&ntilde; gant # hag gant 6 arouez da-heul (da skouer: #FFA309)</p>
 <p>Gant ar fonksion rgb(0, 255, 0)</p>
 <p>Livioù treuzvelus gant ar fonksion rgba(0, 255, 0, 0.5)</p>
+
 <h3>fichennaouego&ugrave;</h3>
 <p>Gant ar fonksion url("<i>url_ur_fichennaoueg</i>")</p>
 
 <h2>Un nebeut reolennoù CSS eus a re dedennusa&ntilde;</h2>
-<table>
+<table style="border: 1px dotted black">
 <tr>
   <th>Attribut</th><th>Params</th><th>Disoc'h</th>
 </tr><tr>
@@ -185,7 +187,7 @@
   transform: scale(2, 2);
   transition: 1s;
 }</code>
-<table>
+<table class="code-table">
 <tr>
 <td><code class="code-block htmlHigh">&lt;img class="zoom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Emoji_u1f64b.svg/128px-Emoji_u1f64b.svg.png"&gt;</code></td>
 <td class="code-rendered">
@@ -194,7 +196,7 @@
 </tr>
 </table>
 <p>Lakaat ur skeud dindan un destenn :</p>
-<table>
+<table class="code-table">
 <tr>
 <td><code class="code-block htmlHigh">&lt;h1 style="text-shadow: 4px 4px 6px #AA22BB;"&gt;SKEUD&lt;/h1&gt;</code></td>
 <td class="code-rendered">
