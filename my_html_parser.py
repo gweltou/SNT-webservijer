@@ -141,7 +141,7 @@ def update_page():
       <li><a href="https://liveweave.com/" target="_blank">liveweave.com</a></li>
       <li><a href="https://fonts.google.com/" target="_blank">Google Fonts</a></li>
       <li>Evit dibab livio&ugrave; : <input type="color" id="html5colorpicker" onchange="clickColor(0, -1, -1, 5)" value="#FF9D00" style="width:120px;"></li>
-      <li><a id="kaoz-link" href="#" target="_blank">Kaoz (Chat lec'hel enlinenn home-made)</a></li>
+      <li><a id="kaoz-link" target="_blank" href="#">Kaoz (Chat lec'hel enlinenn home-made)</a></li>
     </ul>
     """
     
@@ -151,7 +151,7 @@ def update_page():
       <tr>
         <th class="tooltip">URL<span class="tooltiptext">A&ntilde;v ar fichennaoueg a rank echui&ntilde; gant .html</span></th>
         <th class="tooltip">Doctype<span class="tooltiptext">&lt;DOCTYPE!&gt; e penn-kenta&ntilde; an teuliad HTML</span></th>
-        <th class="tooltip">Framm HTML<span class="tooltiptext">Kavet e vez ar framm<pre style="text-align:left;">  &lt;html&gt;\n    &lt;head&gt;\n    &lt;/head&gt;\n    &lt;body&gt;\n    &lt;/body&gt;\n  &lt;/html&gt;</span></th>
+        <th class="tooltip">Framm HTML<span class="tooltiptext">Kavet e vez ar framm<pre style="text-align:left;">  &lt;html&gt;\n    &lt;head&gt;\n    &lt;/head&gt;\n    &lt;body&gt;\n    &lt;/body&gt;\n  &lt;/html&gt;</pre></span></th>
         <th class="tooltip">Titl<span class="tooltiptext">Kavet e vez an elfenno&ugrave; &lt;title&gt;...&lt;/title&gt;</span></th>
         <th class="tooltip">Pennadoù<span class="tooltiptext">Pennado&ugrave; skrid<br>&lt;p&gt;...&lt;/p&gt;</span></th>
         <th class="tooltip">Gerioù<span class="tooltiptext">Niver a gerio&ugrave; en holl pennado&ugrave; skrid</span></th>
