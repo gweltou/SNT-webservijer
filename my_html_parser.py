@@ -141,6 +141,7 @@ def update_page():
       <li><a href="https://liveweave.com/" target="_blank">liveweave.com</a></li>
       <li><a href="https://fonts.google.com/" target="_blank">Google Fonts</a></li>
       <li>Evit dibab livio&ugrave; : <input type="color" id="html5colorpicker" onchange="clickColor(0, -1, -1, 5)" value="#FF9D00" style="width:120px;"></li>
+      <li><a id="kaoz-link" href="#">Kaoz (Chat lec'hel enlinenn)</a></li>
     </ul>
     """
     
@@ -164,7 +165,7 @@ def update_page():
         text += "<tr>\n"
         if f.lower().endswith(".html"):
             text += "<td>"
-            text += f"<a href=\"{f}\" download>"
+            text += f"<a href=\"{f}\" target=\"_blank\">"
             text += html.escape(f)
             text += "</a></td>\n"
         else:
@@ -203,6 +204,7 @@ def update_page():
     
     <script type="application/javascript">
       document.getElementById('upload-link').href = "http://" + document.domain + ":8000/";
+      document.getElementById('kaoz-link').href = "http://" + document.domain + ":8001/";
     </script>
   </body>
 </html>
