@@ -24,10 +24,13 @@ HTML_HEADER = """
   <title>Pajenn degemer lec'hienn Web an eilveidi</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="index_style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap" rel="stylesheet"> 
 </head>
 <body lang="br">
   <div id="upload-container">
-    <a href="#" id="upload-link" target="_blank"><img src="images/upload.png" width="64"></a><span style="/*! vertical-align:middle; */ max-width:70px;display: inline-block;bottom: 5px;position: relative;text-align: center;">Pellgas ur bajenn</span></a>
+    <strong id="upload-text">Pellgas ur bajenn</strong>
+    <strong id="upload-arrow">&#x00BB;</strong>
+    <a href="#" id="upload-link" target="_blank"><img src="images/upload.png" height="64"></a></a>
   </div>
   <h1>Pajenno&ugrave;</h1>
   <div class='summary'>
@@ -134,18 +137,18 @@ def update_page():
     # Ostilhoù
     text += """
     <h1>Kentelioù</h1>
-    <ul>
+    <ul id="kenteliou">
       <li><a href="HTML.html" target="_blank">Ar gentel HTML e brezhoneg</a></li>
       <li><a href="CSS.html" target="_blank">Ar gentel CSS e brezhoneg</a></li>
       <li>Evit mon pelloc'h gant HTML ha CSS (e saozneg) : <a href="https://www.w3schools.com/" target="_blank">www.w3school.com</a></li>
     </ul>
     <h1>Ostilhoù</h1>
-    <ul>
-      <li><a href="https://html5-editor.net/" target="_blank">html5-editor.net</a></li>
-      <li><a href="https://liveweave.com/" target="_blank">liveweave.com</a></li>
-      <li><a href="https://fonts.google.com/" target="_blank">Google Fonts</a></li>
-      <li>Evit dibab livio&ugrave; : <input type="color" id="html5colorpicker" onchange="clickColor(0, -1, -1, 5)" value="#FF9D00" style="width:120px;"></li>
-      <li><a id="kaoz-link" target="_blank" href="#">Kaoz (Chat lec'hel enlinenn home-made)</a></li>
+    <ul id="ostilhou">
+      <li class="tooltip"><a href="https://html5-editor.net/" target="_blank">html5-editor.net</a><span class="tooltiptext">Evit skriva&ntilde; HTML nemetken</span></li>
+      <li class="tooltip"><a href="https://liveweave.com/" target="_blank">liveweave.com</a><span class="tooltiptext">Evit skriva&ntilde; HTML ha CSS, labourat war 2 urzhiataer possupl</span></li>
+      <li class="tooltip"><a href="https://fonts.google.com/" target="_blank">Google Fonts</a><span class="tooltiptext">Stilo&ugrave; skritur Google (CSS)</span></li>
+      <li class="tooltip"><a id="kaoz-link" target="_blank" href="#">Kaoz</a><span class="tooltiptext">Chat lec'hel enlinenn home-made</span></li>
+      <li class="tooltip"><input type="color" id="html5colorpicker" onchange="clickColor(0, -1, -1, 5)" value="#FF9D00" style="width:100px;"><span class="tooltiptext">Evit dibab livio&ugrave;</span></li>
     </ul>
     """
     
@@ -153,7 +156,7 @@ def update_page():
     <h1>Statistiko&ugrave;</h1>
     <table>
       <tr>
-        <th class="tooltip">URL<span class="tooltiptext">A&ntilde;v ar fichennaoueg a rank echui&ntilde; gant .html</span></th>
+        <th class="tooltip">URL<span class="tooltiptext">Anv ar fichennaoueg a rank echui&ntilde; gant .html</span></th>
         <th class="tooltip">Doctype<span class="tooltiptext">&lt;DOCTYPE!&gt; e penn-kenta&ntilde; an teuliad HTML</span></th>
         <th class="tooltip">Framm HTML<span class="tooltiptext">Kavet e vez ar framm<pre style="text-align:left;">  &lt;html&gt;\n    &lt;head&gt;\n    &lt;/head&gt;\n    &lt;body&gt;\n    &lt;/body&gt;\n  &lt;/html&gt;</pre></span></th>
         <th class="tooltip">Titl<span class="tooltiptext">Kavet e vez an elfenno&ugrave; &lt;title&gt;...&lt;/title&gt;</span></th>
