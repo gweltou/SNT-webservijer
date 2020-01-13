@@ -67,8 +67,12 @@ def list_files_by_subdirs(directory):
 def parse_html_file(filename):
     d = dict()
     
-    with open(filename, "r", encoding="latin-1") as f:
-        text = f.read().strip()
+    try:
+        with open(filename, "r", encoding="utf-8") as f:
+            text = f.read().strip()
+    except UnicodeDecodeError:
+        with open(filename, "r", encoding="latin-1") as f:
+            text = f.read().strip()
     
     # Check for DOCTYPE tag
     d["doctype"] = True if text.startswith(r"<!DOCTYPE html>") else False
@@ -78,7 +82,7 @@ def parse_html_file(filename):
     d["head_tags"] = True if re.search(r"<head>.*</head>", text, flags=re.DOTALL) else False
     d["body_tags"] = True if re.search(r"<body.*>.*</body>", text, flags=re.DOTALL) else False
     
-    m = re.findall(pattern_title, text)
+    m = re.findall(pattern_title, text, re.UNICODE)
     if len(m) > 0:
       d["title"] = m[0].strip()
     else:
