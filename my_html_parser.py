@@ -24,7 +24,7 @@ HTML_HEADER = """
   <title>Lec'hienn Web an eilveidi</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="index_style.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans|Special+Elite|Ubuntu&display=swap" rel="stylesheet"> 
 </head>
 <body lang="br">
   <div id="upload-container">
