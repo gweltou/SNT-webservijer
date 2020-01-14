@@ -24,7 +24,7 @@ h1 {
 
 #upload-container {
     height: 64px;
-    background-color: #EEA;
+    background-color: #EC9;
     border-radius: 10px 0 0 10px;
     padding: 6px;
     position:fixed;
@@ -78,6 +78,7 @@ h1 {
 
 .column ul {
     margin-top: 8px;
+    font-size: 1em;
 }
 
 .gwenn1 {
@@ -112,7 +113,7 @@ h1 {
 
 #kenteliou, #ostilhou {
     font-family: 'Ubuntu', sans-serif;
-    font-size: 1.2em;
+    font-size: 1.1em;
     line-height: 1.3em;
 }
 
