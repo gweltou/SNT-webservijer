@@ -12,11 +12,12 @@ body {
 */
 
 h1 {
-    width: 95%;
-    padding: 4px 0 6px 10px;
+    width: 95%; 
+    padding: 0px 0 4px 10px;
     margin: 0;
-    font-family: 'Special Elite', cursive;
+    font-family: 'Abril fatface', cursive;
     font-variant: all-small-caps;
+    font-size: 2em;
     color: white;
     background-image: linear-gradient(to right, #555F, #FFF0);
 }
@@ -72,7 +73,7 @@ h1 {
     padding: 0 0 2px 8px;
     margin: 0;
     text-transform: capitalize;
-    font-size: 1.4em;
+    font-size: 1.3em;
 }
 
 .column ul {
