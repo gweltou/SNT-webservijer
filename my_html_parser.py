@@ -21,7 +21,7 @@ HTML_HEADER = """
 
 <html>
 <head>
-  <title>Pajenn degemer lec'hienn Web an eilveidi</title>
+  <title>Lec'hienn Web an eilveidi</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="index_style.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap" rel="stylesheet"> 
@@ -32,7 +32,7 @@ HTML_HEADER = """
     <strong id="upload-arrow">&#x00BB;</strong>
     <a href="#" id="upload-link" target="_blank"><img src="images/upload.png" height="64"></a></a>
   </div>
-  <h1>Pajenno&ugrave;</h1>
+  <h1>Pajenno&ugrave; krouet ganeomp</h1>
   <div class='summary'>
 """
 
