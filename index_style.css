@@ -2,9 +2,22 @@ html {
     scroll-behavior: smooth;
 }
 
+/*
+body {
+    background-image: url('https://pngriver.com/wp-content/uploads/2018/03/Download-Spider-Web-PNG-File-368-1000x683.png');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+*/
+
 h1 {
+    width: 95%;
+    padding: 4px 0 6px 12px;
     font-family: 'Ubuntu', sans-serif;
     font-variant: all-small-caps;
+    color: white;
+    background-image: linear-gradient(to right, #555F, #FFF0);
 }
 
 #upload-container {
@@ -41,7 +54,7 @@ h1 {
     display: inline-block;
 }
 
-.summary {
+.summary {;
     max-height: 800px;
     display:    flex;
     flex-direction: column;
@@ -53,34 +66,40 @@ h1 {
     font-family: 'Open Sans', sans-serif;
 }
 
+.group-title {
+    padding: 0 0 2px 8px;
+    margin: 0;
+    text-transform: capitalize;
+}
+
 .gwenn1 {
-    color:  #222;
-    background-color:   #EEE;
+    color:  #444;
+    background-image: linear-gradient(to right, #EEEF, #FFF0);
 }
 
 .gwenn2 {
-    color:  #222;
-    background-color:   #DDD;
+    color:  #444;
+     background-image: linear-gradient(to right, #DDDF, #FFF0);
 }
 
 .ruz1 {
     color:  #FFF;
-    background-color:   #E42;
+    background-image: linear-gradient(to right, #E42F, #FFF0);
 }
 
 .ruz2 {
     color:  #FFF;
-    background-color:   #E24;
+    background-image: linear-gradient(to right, #E24F, #FFF0);
 }
 
 .du {
-    color:  #EEE;
-    background-color:   #111;
+    color:  #FFF;
+    background-image: linear-gradient(to right, #111F, #FFF0);
 }
 
 .glas {
     color:  #FFF;
-    background-color:   #29E;
+    background-image: linear-gradient(to right, #29EF, #FFF0);
 }
 
 
