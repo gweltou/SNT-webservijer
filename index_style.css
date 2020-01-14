@@ -17,14 +17,14 @@ h1 {
     margin: 0;
     font-family: 'Abril fatface', cursive;
     font-variant: all-small-caps;
-    font-size: 2em;
+    font-size: 1.9em;
     color: white;
     background-image: linear-gradient(to right, #555F, #FFF0);
 }
 
 #upload-container {
     height: 64px;
-    background-color: #EC9;
+    background-color: #ED9;
     border-radius: 10px 0 0 10px;
     padding: 6px;
     position:fixed;
@@ -73,12 +73,11 @@ h1 {
     padding: 0 0 2px 8px;
     margin: 0;
     text-transform: capitalize;
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 
 .column ul {
     margin-top: 8px;
-    font-size: 1em;
 }
 
 .gwenn1 {
@@ -115,6 +114,7 @@ h1 {
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.1em;
     line-height: 1.3em;
+    margin-bottom: 32px;
 }
 
 #ostilhou li, #kenteliou li {
