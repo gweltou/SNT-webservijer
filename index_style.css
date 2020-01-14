@@ -9,7 +9,7 @@ h1 {
 
 #upload-container {
     height: 64px;
-    background-color: #eee;
+    background-color: #EEA;
     border-radius: 10px 0 0 10px;
     padding: 6px;
     position:fixed;
@@ -19,13 +19,11 @@ h1 {
     box-shadow: 5px 5px 6px #9999;
     display: flex;
     align-items: center;
-    opacity: 0.8;
 }
 
 #upload-container:hover {
     right: 0px;
-    background-color: #eea;
-    opacity: 1;
+    background-color: #EEE;
 }
 
 #upload-text {

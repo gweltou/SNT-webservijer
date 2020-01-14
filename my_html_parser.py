@@ -145,8 +145,8 @@ def update_page():
     <h1>Ostilhoù</h1>
     <ul id="ostilhou">
       <li class="tooltip"><a href="https://html5-editor.net/" target="_blank">html5-editor.net</a><span class="tooltiptext">Evit skriva&ntilde; HTML nemetken</span></li>
-      <li class="tooltip"><a href="https://liveweave.com/" target="_blank">liveweave.com</a><span class="tooltiptext">Evit skriva&ntilde; HTML ha CSS, labourat war 2 urzhiataer possupl</span></li>
-      <li class="tooltip"><a href="https://fonts.google.com/" target="_blank">Google Fonts</a><span class="tooltiptext">Stilo&ugrave; skritur Google (CSS)</span></li>
+      <li class="tooltip"><a href="https://liveweave.com/" target="_blank">liveweave.com</a><span class="tooltiptext">Evit skriva&ntilde; HTML ha CSS, labourat war 2 urzhiataer posupl</span></li>
+      <li class="tooltip"><a href="https://fonts.google.com/" target="_blank">Google Fonts</a><span class="tooltiptext">Stilo&ugrave; skritur Google da zibab (CSS)</span></li>
       <li class="tooltip"><a id="kaoz-link" target="_blank" href="#">Kaoz</a><span class="tooltiptext">Chat lec'hel enlinenn home-made</span></li>
       <li class="tooltip"><input type="color" id="html5colorpicker" onchange="clickColor(0, -1, -1, 5)" value="#FF9D00" style="width:100px;"><span class="tooltiptext">Evit dibab livio&ugrave;</span></li>
     </ul>
