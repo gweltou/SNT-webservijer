@@ -67,6 +67,19 @@ def list_files_by_subdirs(directory):
     return subdir
 
 
+def filter_out_script_tag(filename):
+    text = ""
+    with open(filename, "rb") as f:
+        text = f.read()
+    
+    m = re.search(rb"<script.*main\.js.*</script>", text)
+    if m:
+        text = text[:m.start()] + text[m.end()+1:]
+    
+    with open(filename, "wb") as f:
+        f.write(text)
+
+
 def parse_html_file(filename):
     d = dict()
     

@@ -344,11 +344,16 @@ class HTTPUploadHandler(httpserver.BaseHTTPRequestHandler):
                     # see cgi.FieldStorage.read_lines()
                     with open(localpath, "wb") as fout:
                         shutil.copyfileobj(item.file, fout)
+                        
+                # GOOD PLACE TO PARSE FILE BEFORE WRITING IT TO DISK
+                filter_out_script_tag(localpath)
+                
                 if self.file_mode is not None:
                     os.chmod(localpath, self.file_mode)
                 self.log_message("Received: %s", os.path.basename(localpath))
-                self.log_message("updating index page")
-                update_page()
+                
+            self.log_message("updating index page")
+            update_page()
 
             # -- Reply
             if self.publish_files:
