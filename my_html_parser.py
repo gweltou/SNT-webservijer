@@ -23,6 +23,8 @@ HTML_HEADER = """
 <head>
   <title>Lec'hienn Web an eilveidi</title>
   <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="10">
+
   <link rel="stylesheet" type="text/css" href="index_style.css">
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans|Special+Elite|Ubuntu&display=swap" rel="stylesheet"> 
 </head>
