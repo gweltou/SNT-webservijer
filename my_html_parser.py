@@ -76,7 +76,8 @@ def filter_out_script_tag(filename):
     
     m = re.search(rb"<script.*main\.js.*</script>", text)
     if m:
-        text = text[:m.start()] + text[m.end()+1:]
+        text = text[:m.start()] + text[m.end():]
+        print("script tag removed from", filename)
     
     with open(filename, "wb") as f:
         f.write(text)
