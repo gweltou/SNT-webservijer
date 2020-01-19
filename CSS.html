@@ -46,6 +46,10 @@
         transform: scale(2, 2);
         transition: 1s;
       }
+      
+      .dotted {
+        border: 1px dotted black;
+      }
     </style>
   </head>
   
@@ -131,6 +135,7 @@
 <p>E kantimetrad (da skouer: 0.5cm)</p>
 
 <h3>Livio&ugrave;</h3>
+<p>Gant <a href="https://www.w3schools.com/cssref/css_colors.asp" target="_blank">anvio&ugrave; livio&ugrave; et saozneg</a> (da skouer: blue, lightgrey, azure, fuschia...)</p>
 <p>E stumm hexadecimal, o kregi&ntilde; gant # hag gant 6 arouez da-heul (da skouer: #FFA309)</p>
 <p>Gant ar fonksion rgb(0, 255, 0)</p>
 <p>Livioù treuzvelus gant ar fonksion rgba(0, 255, 0, 0.5)</p>
@@ -139,58 +144,74 @@
 <p>Gant ar fonksion url("<i>url_ur_fichennaoueg</i>")</p>
 
 <h2>Un nebeut reolennoù CSS eus a re dedennusa&ntilde;</h2>
-<table style="border: 1px dotted black">
-<tr>
-  <th>Attribut</th><th>Params</th><th>Disoc'h</th>
+<table class="dotted">
+<tr style="background-color: #ddd;">
+  <th class="dotted">Attribut</th><th class="dotted">Params</th><th class="dotted">Disoc'h</th>
 </tr><tr>
-  <td>width</td><td>(ur ment)</td><td>Ledander an elfenn</td>
+  <td class="dotted">width</td><td class="dotted">(ur ment)</td><td class="dotted">Ledander an elfenn</td>
 </tr><tr>
-  <td>height</td><td>(ur ment)</td><td>Hirder an elfenn</td>
+  <td class="dotted">height</td><td class="dotted">(ur ment)</td><td class="dotted">Hirder an elfenn</td>
 </tr>
-  <td>color</td><td>(ul liv)</td><td>Liv ar skritur</td>
+  <td class="dotted">color</td><td class="dotted">(ul liv)</td><td class="dotted">Liv ar skritur</td>
 </tr><tr>
-  <td>background-color</td><td>(ul liv)</td><td>Liv fo&ntilde;s an elfenn</td>
+  <td class="dotted">background-color</td><td class="dotted">(ul liv)</td><td class="dotted">Liv fo&ntilde;s an elfenn</td>
 </tr><tr>
-  <td>background-image</td><td>url("...")</td><td>Lakaat ur skeudenn e fo&ntilde;s un elfenn</td>
+  <td class="dotted">background-image</td><td class="dotted">url("...")</td><td class="dotted">Lakaat ur skeudenn e fo&ntilde;s un elfenn</td>
 </tr><tr>
-  <td>border-color</td><td>(ul liv)</td><td>Liv bord an elfenn</td>
+  <td class="dotted">border-color</td><td class="dotted">(ul liv)</td><td class="dotted">Liv bord an elfenn</td>
 </tr><tr>
-  <td>border-width</td><td>(ur ment)</td><td>Tevder bord an elfenn</td>
+  <td class="dotted">border-width</td><td class="dotted">(ur ment)</td><td class="dotted">Tevder bord an elfenn</td>
 </tr><tr>
-  <td>border-radius</td><td>(ur ment)</td><td>Rontat kornio&ugrave; an elfenn</td>
+  <td class="dotted">border-radius</td><td class="dotted">(ur ment)</td><td class="dotted">Rontat kornio&ugrave; an elfenn</td>
 </tr><tr>
-  <td>text-align</td><td>center | left | right | justify</td><td>Skweraj an destenn</td>
+  <td class="dotted">text-align</td><td class="dotted">center | left | right | justify</td><td class="dotted">Skweraj an destenn</td>
 </tr><tr>
-  <td>vertical-align</td><td>baseline | bottom | middle | top</td><td>Skweraj a-blom an elfenn</td>
+  <td class="dotted">vertical-align</td><td class="dotted">baseline | bottom | middle | top</td><td class="dotted">Skweraj a-blom an elfenn</td>
 </tr><tr>
-  <td>font-family</td><td>(anv ur skritur)</td><td>Doare skritur</td>
+  <td class="dotted">font-family</td><td class="dotted">(anv ur skritur)</td><td class="dotted">Doare skritur</td>
 </tr><tr>
-  <td>font-size</td><td>(ur ment)</td><td>Ment ar skritur</td>
+  <td class="dotted">font-size</td><td class="dotted">(ur ment)</td><td class="dotted">Ment ar skritur</td>
 </tr><tr>
-  <td>font-style</td><td>normal | italic</td><td>Stil ar skritur</td>
+  <td class="dotted">font-style</td><td class="dotted">normal | italic</td><td class="dotted">Stil ar skritur</td>
 </tr><tr>
-  <td>text-shadow</td><td>(ment ment ment liv)</td><td>Skeud dindan an destenn</td>
+  <td class="dotted">text-shadow</td><td class="dotted">(ment ment ment liv)</td><td class="dotted">Skeud dindan an destenn</td>
 </tr><tr>
-  <td>box-shadow</td><td>(ment ment ment liv)</td><td>Skeud dindan un elfenn</td>
+  <td class="dotted">box-shadow</td><td class="dotted">(ment ment ment liv)</td><td class="dotted">Skeud dindan un elfenn</td>
 </tr><tr>
-  <td>transform</td><td>rotate(deg) | scale(x, y) | translate(x, y)</td><td>Trusfurmadur mentoniezh</td>
+  <td class="dotted">transform</td><td class="dotted">rotate(deg) | scale(x, y) | translate(x, y)</td><td class="dotted">Trusfurmadur mentoniezh</td>
 </tr>
 </table>
 
+<h2>Spasat an trao&ugrave; gant <code>margin</code> ha <code>padding</code></h2>
+<p><code>margin</code> a zo an aer a vez laosket tro dro d'un elfenn HTML.</p>
+<p><code>padding</code> a zo an aer a vez laosket en diabarzh un elfenn HTML, etre ar bord hag an elfenno&ugrave; all lakaet e-barzh.</p>
+<p>Implijet e vez ar reolenno&ugrave;-se gant ur ment (e pixel da skouer).</p>
+<code class="code-block cssHigh">&lt;style&gt;
+  img {
+    margin: 25px;
+    padding: 10px;
+  }
+&lt;/style&gt;</code>
+
 <h2>Skouerio&ugrave; ouzhpenn</h2>
 <p>Kreizenna&ntilde; an holl skeudenno&ugrave; :</p>
-<code class="code-block cssHigh">img {
-  display: block;
-  margin: auto;
-}</code>
+<code class="code-block cssHigh">&lt;style&gt;
+  img {
+    display: block;
+    margin: auto;
+  }
+&lt;/style&gt;</code>
 <p>Brasaat elfenno&ugrave; eus ar c'hlass "zoom" pa vez lakaet kurseur al logodenn warno :</p>
-<code class="code-block cssHigh">.zoom:hover {
-  transform: scale(2, 2);
-  transition: 1s;
-}</code>
 <table class="code-table">
-<tr>
-<td><code class="code-block htmlHigh">&lt;img class="zoom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Emoji_u1f64b.svg/128px-Emoji_u1f64b.svg.png"&gt;</code></td>
+<tr><td>
+<code class="code-block htmlHigh">&lt;style&gt;
+  .zoom:hover {
+    transform: scale(2, 2);
+    transition: 1s;
+  }
+&lt;/style&gt;
+
+&lt;img class="zoom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Emoji_u1f64b.svg/128px-Emoji_u1f64b.svg.png"&gt;</code></td>
 <td class="code-rendered">
 <img class="zoom" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Emoji_u1f64b.svg/128px-Emoji_u1f64b.svg.png">
 </td>
@@ -202,6 +223,34 @@
 <td><code class="code-block htmlHigh">&lt;h1 style="text-shadow: 4px 4px 6px #AA22BB;"&gt;SKEUD&lt;/h1&gt;</code></td>
 <td class="code-rendered">
 <h1 style="text-shadow: 4px 4px 6px #AA22BB;">SKEUD</h1>
+</td>
+</tr>
+</table>
+
+<p>Skeudenno&ugrave; fo&ntilde;s</p>
+<table class="code-table">
+<tr>
+<td><code class="code-block htmlHigh">&lt;style&gt;
+  #fons {
+    height: 200px;
+    width: 200px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/78/Definition_of_Free_Cultural_Works_logo_notext.svg');
+    background-size: 50px;
+    background-repeat: repeat;
+  }
+&lt;/style&gt;
+
+&lt;div id="fons"&gt;&lt;h1&gt;Gant ur fo&amp;ntilde;s&lt;/h1&gt;&lt;/div&gt;</code></td>
+<td class="code-rendered">
+<style>
+  #fons {
+    height: 200px;
+    width: 200px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/78/Definition_of_Free_Cultural_Works_logo_notext.svg');
+    background-size: 50px;
+  }
+</style>
+<div id="fons"><h1>Gant ur fo&ntilde;s</h1></div>
 </td>
 </tr>
 </table>

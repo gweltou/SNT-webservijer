@@ -24,7 +24,6 @@
       
       .code-table {
         width:      100%;
-        
       }
       
       .code-table tr {
@@ -32,7 +31,7 @@
       }
       
       .code-table td {
-        vertical-align:     top;
+        vertical-align: top;
         padding:        8px;
         /*overflow: auto;*/
       }
@@ -152,14 +151,46 @@
     </table>
     
     <h3>Videoio&ugrave; YouTube</h3>
-    <p>Aes eo enframma&ntilde; videoio&ugrave; YouTube (hag ur bern mediao&ugrave; all), dre ma vez kinniget deoc'h kopia&ntilde; ar c'hod enframma&ntilde; pa vez kliket-dehou war ar video. N'ho peus nemet da pega&ntilde; ar c'hod war ho pajenn da c'houde.</p>
+    <p>Aes eo enframma&ntilde; videoio&ugrave; YouTube (hag ur bern mediao&ugrave; all), dre ma vez kinniget deoc'h kopia&ntilde; ar c'hod enframma&ntilde; pa vez kliket-dehou war ar video (dibab "<em>copier le code d'int&eacute;gration</em>"). N'ho peus nemet da pega&ntilde; ar c'hod war ho pajenn da c'houde.</p>
     <table class="code-table">
       <tr><td><code class="code-block htmlHigh">&lt;iframe width=&quot;250&quot; height=&quot;250&quot; src=&quot;https://www.youtube.com/embed/6G9H0cwDrwI&quot;&gt;&lt;/iframe&gt;</code></td>
       <td class="code-rendered">
         <iframe width="250" height="250" src="https://www.youtube.com/embed/6G9H0cwDrwI"></iframe>
       </td></tr>
     </table>
-     
+    
+    <h3>Taolenno&ugrave;</h3>
+    <p>Tu 'zo implij ar merkeeno&ugrave; &lt;th&gt; ha &lt;/th&gt; e plas &lt;td&gt; ha &lt;/td&gt; war a linenn kenta&ntilde; evit rei&ntilde; titlo&ugrave; d'ar golonenno&ugrave;</p>
+      
+      <table class="code-table">
+        <tr>
+          <td><code class="code-block htmlHigh">
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;A&lt;/td&gt;&lt;td&gt;B&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+          </code></td>
+          
+          <td class="code-rendered">
+      <style>
+        .dotted {border: 1px dotted black;}
+      </style>
+      <table class="dotted">
+        <tr>
+          <td class="dotted">A</td><td class="dotted">B</td>
+        </tr>
+        <tr>
+          <td class="dotted">1</td><td class="dotted">2</td>
+        </tr>
+      </table>
+      
+          </td>
+        </tr>
+      </table>
     
     <h3>Boutono&ugrave; (bonus)</h3>
     <p>Alies e vez liammet ar fed klika&ntilde; war ur bouton gant ur fonksion skrivet gant ar yezh javascript evit kaout oberiadenno&ugrave; dedenus. Ne vo ket desket javascript ar bloaz-ma&ntilde; siwaz met tu 'zo deoc'h kinklat ho pajenn gant boutonio&ugrave; memes tra !</p>
@@ -174,18 +205,38 @@
         <button onclick="window.open(window.location.href, '', 'width=280, height=200')">Reducio !</button>
       </td></tr>
     </table>
+
+
+    <h2>Kombina&ntilde; an elfenno&ugrave; HTML</h2>
+    <p>E diabarzh elfenno&ugrave; HTML, bevennet etre <code class="htmlHigh">&lt;elfenn&gt;</code> hag <code class="htmlHigh">&lt;/elfenn&gt;</code>, ez eus tu lakaat elfenno&ugrave; all.</p>
+    <p>Tu 'zo, da skouer, ober un hiperliamm gant ur skeudenn : <code class="htmlHigh">&lt;a href="..."&gt; &lt;img src="..."&gt; &lt;/a&gt;</code></p>
+    <p>Ur skouer all : Listenno&ugrave; e-barzh listenno&ugrave;</p>
+
     
-    <h2>Un nebeut elfenno&ugrave; HTML all</h2>
-    <h3>An taolenno&ugrave;</h3>
-    
-      <table>
-        <tr>
-          <td>A</td><td>B</td>
-        </tr>
-        <tr>
-          <td>1</td><td>2</td>
-        </tr>
-      </table>
+    <table class="code-table">
+      <tr><td><code class="code-block htmlHigh">&lt;ul&gt;
+  &lt;li&gt;Unan&lt;/li&gt;
+  &lt;li&gt;Daou&lt;/li&gt;
+  &lt;li&gt;Tri
+    &lt;ul&gt;
+      &lt;li&gt;Iz-unan&lt;/li&gt;
+      &lt;li&gt;Iz-daou&lt;/li&gt;
+      &lt;li&gt;Iz-tri&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;li&gt;Pevar&lt;/li&gt;
+&lt;/ul&gt;</code></td>
+      <td class="code-rendered">
+<ul>
+  <li>Unan</li>
+  <li>Daou</li>
+  <li>Tri
+    <ul>
+      <li>Iz-unan</li>
+      <li>Iz-daou</li>
+      <li>Iz-tri</li>
+  </ul>
+  <li>Pevar</li>
+</ul>
       </td></tr>
     </table>
     

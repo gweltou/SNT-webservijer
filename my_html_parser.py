@@ -107,6 +107,12 @@ def parse_html_file(filename):
     else:
       d["title"] = None
     
+    m = re.findall(pattern_author, text)
+    if len(m) > 0:
+      d["author"] = m[0].strip()
+    else:
+      d["author"] = None
+    
     m = re.findall(pattern_p, text)
     d["number_p"] = len(m)
     d["number_words"] = 0
@@ -173,6 +179,7 @@ def update_page():
     <table>
       <tr>
         <th class="tooltip">URL<span class="tooltiptext">Anv ar fichennaoueg a rank echui&ntilde; gant .html</span></th>
+        <th class="tooltip">Oberourien<span class="tooltiptext">Merken &lt;meta name="author" content="..."&gt;</span></th>
         <th class="tooltip">Doctype<span class="tooltiptext">&lt;DOCTYPE!&gt; e penn-kenta&ntilde; an teuliad HTML</span></th>
         <th class="tooltip">Framm HTML<span class="tooltiptext">Kavet e vez ar framm<pre style="text-align:left;">  &lt;html&gt;\n    &lt;head&gt;\n    &lt;/head&gt;\n    &lt;body&gt;\n    &lt;/body&gt;\n  &lt;/html&gt;</pre></span></th>
         <th class="tooltip">Titl<span class="tooltiptext">Kavet e vez an elfenno&ugrave; &lt;title&gt;...&lt;/title&gt;</span></th>
@@ -196,6 +203,11 @@ def update_page():
             text += f"<a href=\"{f}\">"
             text += html.escape(f)
             text += "</a></td>\n"
+        
+        if p["author"]:
+            text += f'<td style="background-color:#99FF99">{p["author"]}</td>'
+        else:
+            text += "<td style=\"background-color:#FBA\">Goulo</td>"
         
         if p["doctype"]:
             text += "<td style=\"background-color:#99FF99\">Mat</td>"
