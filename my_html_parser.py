@@ -195,9 +195,9 @@ def update_page():
         <th class="tooltip">Doctype<span class="tooltiptext">&lt;DOCTYPE!&gt; e penn-kenta&ntilde; an teuliad HTML</span></th>
         <th class="tooltip">Framm HTML<span class="tooltiptext">Kavet e vez ar framm<pre style="text-align:left;">  &lt;html&gt;\n    &lt;head&gt;\n    &lt;/head&gt;\n    &lt;body&gt;\n    &lt;/body&gt;\n  &lt;/html&gt;</pre></span></th>
         <th class="tooltip">Titl<span class="tooltiptext">Kavet e vez an elfenno&ugrave; &lt;title&gt;...&lt;/title&gt;</span></th>
-        <th class="tooltip">Pennadoù<span class="tooltiptext">Pennad skrid<br>&lt;p&gt;...&lt;/p&gt;</span></th>
+        <th class="tooltip">Pennad<span class="tooltiptext">Pennado&ugrave; skrid<br>&lt;p&gt;...&lt;/p&gt;</span></th>
         <th class="tooltip">Gerioù<span class="tooltiptext">Niver a gerio&ugrave; en holl pennado&ugrave; skrid</span></th>
-        <th class="tooltip">Skeudennoù<span class="tooltiptext">Skeudenn<br>&lt;img src="..."&gt;</span></th>
+        <th class="tooltip">Skeudenn<span class="tooltiptext">Skeudenno&ugrave;<br>&lt;img src="..."&gt;</span></th>
         <th class="tooltip">Hiperliamm<span class="tooltiptext">Liammo&ugrave; hiperskrid<br>&lt;a href="..."&gt;&nbsp;...&nbsp;&lt;/a&gt;</span></th>
         <th>Evezhiadenno&ugrave;</th>
       </tr>
