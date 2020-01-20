@@ -206,7 +206,7 @@ def update_page():
     for f in sorted(pages):
         p = pages[f]
         text += "<tr>\n"
-        if f.lower().endswith(".html"):
+        if f.lower().endswith(".html") or f.lower().endswith(".htm"):
             text += "<td>"
             text += f"<a href=\"{f}\" target=\"_blank\">"
             text += html.escape(f)
