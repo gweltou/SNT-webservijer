@@ -7,6 +7,14 @@ import html
 
 
 ROOT_FOLDER = "pajennou"
+UPLOAD_SERVERS = {  "gwenn1": "8000",
+                    "gwenn2": "8001",
+                    "ruz1"  : "8002",
+                    "ruz2"  : "8003",
+                    "du"    : "8004",
+                    "glas"  : "8005",
+                    "kelennerien": "8006",
+                  }
 
 pattern_title =     r"<title>(.+)</title>"
 pattern_author =    r"<meta\s+name\s*=\s*\"author\"\s+content\s*=\s*\"(.+)\"\s*>"
@@ -23,20 +31,16 @@ HTML_HEADER = """
 <head>
   <title>Lec'hienn Web an eilveidi</title>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="10">
+  
 
   <link rel="stylesheet" type="text/css" href="index_style.css">
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans|Special+Elite|Ubuntu&display=swap" rel="stylesheet"> 
 </head>
 <body lang="br">
-  <div id="upload-container">
-    <strong id="upload-text">Pellgas ur bajenn</strong>
-    <strong id="upload-arrow">&#x00BB;</strong>
-    <a href="#" id="upload-link" target="_blank"><img src="images/upload.png" height="64"></a></a>
-  </div>
   <h1>Pajenno&ugrave; krouet ganeomp</h1>
   <div class='summary'>
 """
+
 
 
 def list_files_in(directory, depth=2):
@@ -153,23 +157,41 @@ def update_page():
     text = HTML_HEADER
     
     # Pajennoù liseidi
+    group_names = []
     for files in group_of_files:
-        text += "<div class='column'>\n"
+        text += "    <div class='column'>\n"
         group_name = files[0].split(os.path.sep)[1]
-        text += "<h2 class='group-title {}'>".format(group_name) + group_name + "</h3>\n"
-        text += "<ul>\n"
+        group_names.append(group_name)
+        text += "      <h2 class='group-title {}'>".format(group_name) + group_name + "</h2>\n"
+        text += "      <ul>\n"
         for f in sorted(files):
             if not f.lower().endswith(".html"):
                 continue
             
-            text += "<li>"
+            text +=  "        <li>"
             text += f'<a class="page-title" href="{f}" target="_blank">{pages[f]["title"]}</a><br>'
-            text += "</li>\n"
+            text +=  "</li>\n"
         
-        text += "</ul>\n"
-        text += "</div>\n\n"
+        text += "      </ul>\n"
+        text += "    </div>\n"
     
-    text += "</div>\n"
+    text += "  </div>\n\n"
+    
+    # Upload links
+    text += """  <div id="upload-container">
+    <strong id="upload-text">Pellgas ur bajenn</strong>
+    <strong id="upload-arrow">&#x00BB;</strong>
+    <div id="upload-links-container">
+      <ul>
+"""
+    
+    for group_name in sorted(group_names):
+        text += "       <li><a href='#' id='upload-link-{}' class='upload-link {}' target='_blank'>{}</a></li>\n".format(group_name, group_name, group_name)
+    
+    text += """      </ul>
+    </div>
+  </div>
+"""
     
     # Ostilhoù
     text += """
@@ -257,8 +279,18 @@ def update_page():
     </table>
     
     <script type="application/javascript">
-      document.getElementById('upload-link').href = "http://" + document.domain + ":8000/";
-      document.getElementById('kaoz-link').href = "http://" + document.domain + ":8001/";
+"""
+    
+    for folder_name in group_names:
+        text += f"""      document.getElementById('upload-link-{folder_name}').href = 'http://' + document.domain + ':{UPLOAD_SERVERS[folder_name]}/';\n"""
+    
+    text += """
+      document.getElementById('kaoz-link').href = "http://" + document.domain + ":8100/";
+      
+      function openInNewTab(url) {
+        var win = window.open(url, '_blank');
+        win.focus();
+      }
     </script>
   </body>
 </html>
