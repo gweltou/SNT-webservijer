@@ -129,6 +129,18 @@ def parse_html_file(filename):
     
 
 def update_page():
+    evezhiadennou = dict()
+    if os.path.exists("evezhiadennou.txt"):
+        with open("evezhiadennou.txt", "r") as f:
+            lines = f.readlines()
+        
+        for l in lines:
+            l = l.strip()
+            if not l or l.startswith('#'):
+                continue
+            strollad, evezhiadenn = l.split(';')
+            evezhiadennou[strollad.strip()] = evezhiadenn.strip()
+    
     pages = dict()
     group_of_files = list_files_by_subdirs(ROOT_FOLDER)
     for files in group_of_files:
@@ -183,10 +195,11 @@ def update_page():
         <th class="tooltip">Doctype<span class="tooltiptext">&lt;DOCTYPE!&gt; e penn-kenta&ntilde; an teuliad HTML</span></th>
         <th class="tooltip">Framm HTML<span class="tooltiptext">Kavet e vez ar framm<pre style="text-align:left;">  &lt;html&gt;\n    &lt;head&gt;\n    &lt;/head&gt;\n    &lt;body&gt;\n    &lt;/body&gt;\n  &lt;/html&gt;</pre></span></th>
         <th class="tooltip">Titl<span class="tooltiptext">Kavet e vez an elfenno&ugrave; &lt;title&gt;...&lt;/title&gt;</span></th>
-        <th class="tooltip">Pennadoù<span class="tooltiptext">Pennado&ugrave; skrid<br>&lt;p&gt;...&lt;/p&gt;</span></th>
+        <th class="tooltip">Pennadoù<span class="tooltiptext">Pennad skrid<br>&lt;p&gt;...&lt;/p&gt;</span></th>
         <th class="tooltip">Gerioù<span class="tooltiptext">Niver a gerio&ugrave; en holl pennado&ugrave; skrid</span></th>
-        <th class="tooltip">Skeudennoù<span class="tooltiptext">Skeudennoù<br>&lt;img src="..."&gt;</span></th>
-        <th class="tooltip">Hiperliammoù<span class="tooltiptext">Liammoù hiperskrid<br>&lt;a href="..."&gt;&nbsp;...&nbsp;&lt;/a&gt;</span></th>
+        <th class="tooltip">Skeudennoù<span class="tooltiptext">Skeudenn<br>&lt;img src="..."&gt;</span></th>
+        <th class="tooltip">Hiperliamm<span class="tooltiptext">Liammo&ugrave; hiperskrid<br>&lt;a href="..."&gt;&nbsp;...&nbsp;&lt;/a&gt;</span></th>
+        <th>Evezhiadenno&ugrave;</th>
       </tr>
     """
     
@@ -231,6 +244,9 @@ def update_page():
         text += f"<td>{p['number_img']}</td>"
         
         text += f"<td>{p['number_a']}</td>"
+        
+        if p['author'] in evezhiadennou:
+            text += f"<td>{html.escape(evezhiadennou.get(p['author']))}</td>"
         
         text += "</tr>\n"
     
