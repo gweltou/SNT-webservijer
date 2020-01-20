@@ -39,10 +39,12 @@ HTML_HEADER = """
 """
 
 
-def list_files_in(directory):
+def list_files_in(directory, depth=2):
     list_files = []
     
     for dirpath, dirnames, filenames in walk(directory):
+        if len(dirpath.split(os.path.sep)) > depth:
+            continue
         for filename in filenames:
             list_files.append(os.path.join(dirpath, filename))
     
@@ -142,7 +144,8 @@ def update_page():
             evezhiadennou[strollad.strip()] = evezhiadenn.strip()
     
     pages = dict()
-    group_of_files = list_files_by_subdirs(ROOT_FOLDER)
+    group_of_files = [[f for f in sub if f.lower().endswith('.html') or f.lower().endswith('.htm')]
+                         for sub in list_files_by_subdirs(ROOT_FOLDER)]
     for files in group_of_files:
         for f in files:
             pages[f] = parse_html_file(f)
@@ -160,7 +163,7 @@ def update_page():
                 continue
             
             text += "<li>"
-            text += f"<a class='page-title' href=\"{f}\" target=\"_blank\">{pages[f]['title']}</a><br>"
+            text += f'<a class="page-title" href="{f}" target="_blank">{pages[f]["title"]}</a><br>'
             text += "</li>\n"
         
         text += "</ul>\n"
