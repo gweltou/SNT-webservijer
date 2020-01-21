@@ -11,31 +11,31 @@ sleep 2
 
 
 echo "executing: python3 droopy.py -d pajennou/gwenn1 8000 &"
-python3 droopy.py -d "pajennou/gwenn1" 8000 &
+sudo python3 droopy.py -d "pajennou/gwenn1" 8000 &
 sleep 2
 
 echo "executing: python3 droopy.py -d pajennou/gwenn2 8001 &"
-python3 droopy.py -d "pajennou/gwenn2" 8001 &
+sudo python3 droopy.py -d "pajennou/gwenn2" 8001 &
 sleep 2
 
 echo "executing: python3 droopy.py -d pajennou/ruz1 8002 &"
-python3 droopy.py -d "pajennou/ruz1" 8002 &
+sudo python3 droopy.py -d "pajennou/ruz1" 8002 &
 sleep 2
 
 echo "executing: python3 droopy.py -d pajennou/ruz2 8003 &"
-python3 droopy.py -d "pajennou/ruz2" 8003 &
+sudo python3 droopy.py -d "pajennou/ruz2" 8003 &
 sleep 2
 
 echo "executing: python3 droopy.py -d pajennou/du 8004 &"
-python3 droopy.py -d "pajennou/du" 8004 &
+sudo python3 droopy.py -d "pajennou/du" 8004 &
 sleep 2
 
 echo "executing: python3 droopy.py -d pajennou/glas 8005 &"
-python3 droopy.py -d "pajennou/glas" 8005 &
+sudo python3 droopy.py -d "pajennou/glas" 8005 &
 sleep 2
 
 echo "executing: python3 droopy.py -d pajennou/kelennerien 8006 &"
-python3 droopy.py -d "pajennou/kelennerien" 8006 &
+sudo python3 droopy.py -d "pajennou/kelennerien" 8006 &
 sleep 2
 
 
