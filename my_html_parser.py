@@ -7,6 +7,14 @@ import html
 
 
 ROOT_FOLDER = "pajennou"
+UPLOAD_SERVERS = {  "gwenn1": "8000",
+                    "gwenn2": "8001",
+                    "ruz1"  : "8002",
+                    "ruz2"  : "8003",
+                    "du"    : "8004",
+                    "glas"  : "8005",
+                    "kelennerien": "8006",
+                  }
 
 pattern_title =     r"<title>(.+)</title>"
 pattern_author =    r"<meta\s+name\s*=\s*\"author\"\s+content\s*=\s*\"(.+)\"\s*>"
@@ -23,20 +31,16 @@ HTML_HEADER = """
 <head>
   <title>Lec'hienn Web an eilveidi</title>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="10">
+  
 
   <link rel="stylesheet" type="text/css" href="index_style.css">
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans|Special+Elite|Ubuntu&display=swap" rel="stylesheet"> 
 </head>
 <body lang="br">
-  <div id="upload-container">
-    <strong id="upload-text">Pellgas ur bajenn</strong>
-    <strong id="upload-arrow">&#x00BB;</strong>
-    <a href="#" id="upload-link" target="_blank"><img src="images/upload.png" height="64"></a></a>
-  </div>
   <h1>Pajenno&ugrave; krouet ganeomp</h1>
   <div class='summary'>
 """
+
 
 
 def list_files_in(directory, depth=2):
@@ -153,23 +157,41 @@ def update_page():
     text = HTML_HEADER
     
     # Pajennoù liseidi
+    group_names = []
     for files in group_of_files:
-        text += "<div class='column'>\n"
+        text += "    <div class='column'>\n"
         group_name = files[0].split(os.path.sep)[1]
-        text += "<h2 class='group-title {}'>".format(group_name) + group_name + "</h3>\n"
-        text += "<ul>\n"
+        group_names.append(group_name)
+        text += "      <h2 class='group-title {}'>".format(group_name) + group_name + "</h2>\n"
+        text += "      <ul>\n"
         for f in sorted(files):
             if not f.lower().endswith(".html"):
                 continue
             
-            text += "<li>"
+            text +=  "        <li>"
             text += f'<a class="page-title" href="{f}" target="_blank">{pages[f]["title"]}</a><br>'
-            text += "</li>\n"
+            text +=  "</li>\n"
         
-        text += "</ul>\n"
-        text += "</div>\n\n"
+        text += "      </ul>\n"
+        text += "    </div>\n"
     
-    text += "</div>\n"
+    text += "  </div>\n\n"
+    
+    # Upload links
+    text += """  <div id="upload-container">
+    <strong id="upload-text">Pellgas ur bajenn</strong>
+    <strong id="upload-arrow">&#x00BB;</strong>
+    <div id="upload-links-container">
+      <ul>
+"""
+    
+    for group_name in sorted(group_names):
+        text += "       <li><a href='#' id='upload-link-{}' class='upload-link {}' target='_blank'>{}</a></li>\n".format(group_name, group_name, group_name)
+    
+    text += """      </ul>
+    </div>
+  </div>
+"""
     
     # Ostilhoù
     text += """
@@ -195,9 +217,9 @@ def update_page():
       <tr>
         <th class="tooltip">URL<span class="tooltiptext">Anv ar fichennaoueg a rank echui&ntilde; gant .html</span></th>
         <th class="tooltip">Oberourien<span class="tooltiptext">Merken &lt;meta name="author" content="..."&gt;</span></th>
+        <th class="tooltip">Titl<span class="tooltiptext">Kavet e vez an elfenno&ugrave; &lt;title&gt;...&lt;/title&gt;</span></th>
         <th class="tooltip">Doctype<span class="tooltiptext">&lt;DOCTYPE!&gt; e penn-kenta&ntilde; an teuliad HTML</span></th>
         <th class="tooltip">Framm HTML<span class="tooltiptext">Kavet e vez ar framm<pre style="text-align:left;">  &lt;html&gt;\n    &lt;head&gt;\n    &lt;/head&gt;\n    &lt;body&gt;\n    &lt;/body&gt;\n  &lt;/html&gt;</pre></span></th>
-        <th class="tooltip">Titl<span class="tooltiptext">Kavet e vez an elfenno&ugrave; &lt;title&gt;...&lt;/title&gt;</span></th>
         <th class="tooltip">Pennad<span class="tooltiptext">Pennado&ugrave; skrid<br>&lt;p&gt;...&lt;/p&gt;</span></th>
         <th class="tooltip">Gerioù<span class="tooltiptext">Niver a gerio&ugrave; en holl pennado&ugrave; skrid</span></th>
         <th class="tooltip">Skeudenn<span class="tooltiptext">Skeudenno&ugrave;<br>&lt;img src="..."&gt;</span></th>
@@ -225,6 +247,11 @@ def update_page():
         else:
             text += "<td style=\"background-color:#FBA\">Goulo</td>"
         
+        if p["title"] != None:
+            text += f"<td>{html.escape(p['title'])}</td>"
+        else:
+            text += "<td style=\"background-color:#FBA\">Titl ebet</td>"
+        
         if p["doctype"]:
             text += "<td style=\"background-color:#99FF99\">Mat</td>"
         else:
@@ -234,11 +261,6 @@ def update_page():
             text += "<td style=\"background-color:#99FF99\">Mat</td>"
         else:
             text += "<td style=\"background-color:#FBA\">Kudenn</td>"
-        
-        if p["title"] != None:
-            text += f"<td>{html.escape(p['title'])}</td>"
-        else:
-            text += "<td style=\"background-color:#FBA\">Titl ebet</td>"
         
         text += f"<td>{p['number_p']}</td>"
         
@@ -257,8 +279,18 @@ def update_page():
     </table>
     
     <script type="application/javascript">
-      document.getElementById('upload-link').href = "http://" + document.domain + ":8000/";
-      document.getElementById('kaoz-link').href = "http://" + document.domain + ":8001/";
+"""
+    
+    for folder_name in group_names:
+        text += f"""      document.getElementById('upload-link-{folder_name}').href = 'http://' + document.domain + ':{UPLOAD_SERVERS[folder_name]}/';\n"""
+    
+    text += """
+      document.getElementById('kaoz-link').href = "http://" + document.domain + ":8100/";
+      
+      function openInNewTab(url) {
+        var win = window.open(url, '_blank');
+        win.focus();
+      }
     </script>
   </body>
 </html>

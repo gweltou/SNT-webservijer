@@ -5,65 +5,8 @@
 Droopy (http://stackp.online.fr/droopy)
 Copyright 2008-2013 (c) Pierre Duquesne <stackp@online.fr>
 Licensed under the New BSD License.
-
-Changelog
-   20151025 * Global variables removed
-            * Code refactoring and re-layout
-            * Python 2 and 3 compatibility
-            * Efficiency and Security improvements
-            * Added --config-file option.
-            * Retains backwards compatibility.
-   20131121 * Update HTML/CSS for mobile devices
-            * Add HTTPS support
-            * Add HTTP basic authentication
-            * Add option to change uploaded file permissions
-            * Add support for HTML5 multiple file upload
-   20120108 * Taiwanese translation by Li-cheng Hsu.
-   20110928 * Correctly save message with --save-config. Fix by Sven Radde.
-   20110708 * Polish translation by Jacek Politowski.
-   20110625 * Fix bug regarding filesystem name encoding.
-            * Save the --dl option when --save-config is passed.
-   20110501 * Add the --dl option to let clients download files.
-            * CSS speech bubble.
-   20101130 * CSS and HTML update. Switch to the new BSD License.
-   20100523 * Simplified Chinese translation by Ye Wei.
-   20100521 * Hungarian translation by Csaba Szigetvári.
-            * Russian translation by muromec.
-            * Use %APPDATA% Windows environment variable -- fix by Maik.
-   20091229 * Brazilian Portuguese translation by
-              Carlos Eduardo Moreira dos Santos and Toony Poony.
-            * IE layout fix by Carlos Eduardo Moreira dos Santos.
-            * Galician translation by Miguel Anxo Bouzada.
-   20090721 * Indonesian translation by Kemas.
-   20090205 * Japanese translation by Satoru Matsumoto.
-            * Slovak translation by CyberBoBaK.
-   20090203 * Norwegian translation by Preben Olav Pedersen.
-   20090202 * Korean translation by xissy.
-            * Fix for unicode filenames by xissy.
-            * Relies on 127.0.0.1 instead of "localhost" hostname.
-   20090129 * Serbian translation by kotnik.
-   20090125 * Danish translation by jan.
-   20081210 * Greek translation by n2j3.
-   20081128 * Slovene translation by david.
-            * Romanian translation by Licaon.
-   20081022 * Swedish translation by David Eurenius.
-   20081001 * Droopy gets pretty (css and html rework).
-            * Finnish translation by ipppe.
-   20080926 * Configuration saving and loading.
-   20080906 * Extract the file base name (some browsers send the full path).
-   20080905 * File is uploaded directly into the specified directory.
-   20080904 * Arabic translation by Djalel Chefrour.
-            * Italian translation by fabius and d1s4st3r.
-            * Dutch translation by Tonio Voerman.
-            * Portuguese translation by Pedro Palma.
-            * Turkish translation by Heartsmagic.
-   20080727 * Spanish translation by Federico Kereki.
-   20080624 * Option -d or --directory to specify the upload directory.
-   20080622 * File numbering to avoid overwriting.
-   20080620 * Czech translation by Jiří.
-            * German translation by Michael.
-   20080408 * First release.
 """
+
 from __future__ import print_function
 import sys
 if sys.version_info >= (3, 0):
@@ -346,12 +289,15 @@ class HTTPUploadHandler(httpserver.BaseHTTPRequestHandler):
                         shutil.copyfileobj(item.file, fout)
                         
                 # GOOD PLACE TO PARSE FILE BEFORE WRITING IT TO DISK
+                ### ADDED
                 filter_out_script_tag(localpath)
                 
                 if self.file_mode is not None:
                     os.chmod(localpath, self.file_mode)
+                ### ADDED
                 self.log_message("Received: %s", os.path.basename(localpath))
                 
+            ### ADDED
             self.log_message("updating index page")
             update_page()
 
@@ -630,61 +576,6 @@ default_templates = {
 
 # -- Translations
 default_localisations = {
-    'ar' : {
-        "maintitle":       u"إرسال ملف",
-        "submit":          u"إرسال",
-        "sending":         u"الملف قيد الإرسال",
-        "successtitle":    u"تم استقبال الملف",
-        "received":        u"تم استقبال الملف !",
-        "another":         u"إرسال ملف آخر",
-        "errortitle":      u"مشكلة",
-        "problem":         u"حدثت مشكلة !",
-        "retry":           u"إعادة المحاولة",
-        "discover":        u"اكتشاف عنوان هذه الصفحة"},
-    'cs' : {
-        "maintitle":       u"Poslat soubor",
-        "submit":          u"Poslat",
-        "sending":         u"Posílám",
-        "successtitle":    u"Soubor doručen",
-        "received":        u"Soubor doručen !",
-        "another":         u"Poslat další soubor",
-        "errortitle":      u"Chyba",
-        "problem":         u"Stala se chyba !",
-        "retry":           u"Zkusit znova.",
-        "discover":        u"Zjistit adresu stránky"},
-    'da' : {
-        "maintitle":       u"Send en fil",
-        "submit":          u"Send",
-        "sending":         u"Sender",
-        "successtitle":    u"Fil modtaget",
-        "received":        u"Fil modtaget!",
-        "another":         u"Send en fil til.",
-        "errortitle":      u"Problem",
-        "problem":         u"Det er opstået en fejl!",
-        "retry":           u"Forsøg igen.",
-        "discover":        u"Find adressen til denne side"},
-    'de' : {
-        "maintitle":       "Datei senden",
-        "submit":          "Senden",
-        "sending":         "Sendet",
-        "successtitle":    "Datei empfangen",
-        "received":        "Datei empfangen!",
-        "another":         "Weitere Datei senden",
-        "errortitle":      "Fehler",
-        "problem":         "Ein Fehler ist aufgetreten!",
-        "retry":           "Wiederholen",
-        "discover":        "Internet-Adresse dieser Seite feststellen"},
-    'el' : {
-        "maintitle":       u"Στείλε ένα αρχείο",
-        "submit":          u"Αποστολή",
-        "sending":         u"Αποστέλλεται...",
-        "successtitle":    u"Επιτυχής λήψη αρχείου ",
-        "received":        u"Λήψη αρχείου ολοκληρώθηκε",
-        "another":         u"Στείλε άλλο ένα αρχείο",
-        "errortitle":      u"Σφάλμα",
-        "problem":         u"Παρουσιάστηκε σφάλμα",
-        "retry":           u"Επανάληψη",
-        "discover":        u"Βρες την διεύθυνση της σελίδας"},
     'en' : {
         "maintitle":       "Send a file",
         "submit":          "Send",
@@ -696,28 +587,6 @@ default_localisations = {
         "problem":         "There has been a problem!",
         "retry":           "Retry.",
         "discover":        "Discover the address of this page"},
-    'es' : {
-        "maintitle":       u"Enviar un archivo",
-        "submit":          u"Enviar",
-        "sending":         u"Enviando",
-        "successtitle":    u"Archivo recibido",
-        "received":        u"¡Archivo recibido!",
-        "another":         u"Enviar otro archivo.",
-        "errortitle":      u"Error",
-        "problem":         u"¡Hubo un problema!",
-        "retry":           u"Reintentar",
-        "discover":        u"Descubrir la dirección de esta página"},
-    'fi' : {
-        "maintitle":       u"Lähetä tiedosto",
-        "submit":          u"Lähetä",
-        "sending":         u"Lähettää",
-        "successtitle":    u"Tiedosto vastaanotettu",
-        "received":        u"Tiedosto vastaanotettu!",
-        "another":         u"Lähetä toinen tiedosto.",
-        "errortitle":      u"Virhe",
-        "problem":         u"Virhe lahetettäessä tiedostoa!",
-        "retry":           u"Uudelleen.",
-        "discover":        u"Näytä tämän sivun osoite"},
     'fr' : {
         "maintitle":       u"Envoyer un fichier",
         "submit":          u"Envoyer",
@@ -729,226 +598,6 @@ default_localisations = {
         "problem":         u"Il y a eu un problème !",
         "retry":           u"Réessayer.",
         "discover":        u"Découvrir l'adresse de cette page"},
-    'gl' : {
-        "maintitle":       u"Enviar un ficheiro",
-        "submit":          u"Enviar",
-        "sending":         u"Enviando",
-        "successtitle":    u"Ficheiro recibido",
-        "received":        u"Ficheiro recibido!",
-        "another":         u"Enviar outro ficheiro.",
-        "errortitle":      u"Erro",
-        "problem":         u"Xurdíu un problema!",
-        "retry":           u"Reintentar",
-        "discover":        u"Descubrir o enderezo desta páxina"},
-    'hu' : {
-        "maintitle":       u"Állomány küldése",
-        "submit":          u"Küldés",
-        "sending":         u"Küldés folyamatban",
-        "successtitle":    u"Az állomány beérkezett",
-        "received":        u"Az állomány beérkezett!",
-        "another":         u"További állományok küldése",
-        "errortitle":      u"Hiba",
-        "problem":         u"Egy hiba lépett fel!",
-        "retry":           u"Megismételni",
-        "discover":        u"Az oldal Internet-címének megállapítása"},
-    'id' : {
-        "maintitle":       "Kirim sebuah berkas",
-        "submit":          "Kirim",
-        "sending":         "Mengirim",
-        "successtitle":    "Berkas diterima",
-        "received":        "Berkas diterima!",
-        "another":         "Kirim berkas yang lain.",
-        "errortitle":      "Permasalahan",
-        "problem":         "Telah ditemukan sebuah kesalahan!",
-        "retry":           "Coba kembali.",
-        "discover":        "Kenali alamat IP dari halaman ini"},
-    'it' : {
-        "maintitle":       u"Invia un file",
-        "submit":          u"Invia",
-        "sending":         u"Invio in corso",
-        "successtitle":    u"File ricevuto",
-        "received":        u"File ricevuto!",
-        "another":         u"Invia un altro file.",
-        "errortitle":      u"Errore",
-        "problem":         u"Si è verificato un errore!",
-        "retry":           u"Riprova.",
-        "discover":        u"Scopri l’indirizzo di questa pagina"},
-    'ja' : {
-        "maintitle":       u"ファイル送信",
-        "submit":          u"送信",
-        "sending":         u"送信中",
-        "successtitle":    u"受信完了",
-        "received":        u"ファイルを受信しました！",
-        "another":         u"他のファイルを送信する",
-        "errortitle":      u"問題発生",
-        "problem":         u"問題が発生しました！",
-        "retry":           u"リトライ",
-        "discover":        u"このページのアドレスを確認する"},
-    'ko' : {
-        "maintitle":       u"파일 보내기",
-        "submit":          u"보내기",
-        "sending":         u"보내는 중",
-        "successtitle":    u"파일이 받아졌습니다",
-        "received":        u"파일이 받아졌습니다!",
-        "another":         u"다른 파일 보내기",
-        "errortitle":      u"문제가 발생했습니다",
-        "problem":         u"문제가 발생했습니다!",
-        "retry":           u"다시 시도",
-        "discover":        u"이 페이지 주소 알아보기"},
-    'nl' : {
-        "maintitle":       "Verstuur een bestand",
-        "submit":          "Verstuur",
-        "sending":         "Bezig met versturen",
-        "successtitle":    "Bestand ontvangen",
-        "received":        "Bestand ontvangen!",
-        "another":         "Verstuur nog een bestand.",
-        "errortitle":      "Fout",
-        "problem":         "Er is een fout opgetreden!",
-        "retry":           "Nog eens.",
-        "discover":        "Vind het adres van deze pagina"},
-    'no' : {
-        "maintitle":       u"Send en fil",
-        "submit":          u"Send",
-        "sending":         u"Sender",
-        "successtitle":    u"Fil mottatt",
-        "received":        u"Fil mottatt !",
-        "another":         u"Send en ny fil.",
-        "errortitle":      u"Feil",
-        "problem":         u"Det har skjedd en feil !",
-        "retry":           u"Send på nytt.",
-        "discover":        u"Finn addressen til denne siden"},
-    'pl' : {
-        "maintitle":       u"Wyślij plik",
-        "submit":          u"Wyślij",
-        "sending":         u"Wysyłanie",
-        "successtitle":    u"Plik wysłany",
-        "received":        u"Plik wysłany!",
-        "another":         u"Wyślij kolejny plik.",
-        "errortitle":      u"Problem",
-        "problem":         u"Wystąpił błąd!",
-        "retry":           u"Spróbuj ponownie.",
-        "discover":        u"Znajdź adres tej strony"},
-    'pt' : {
-        "maintitle":       u"Enviar um ficheiro",
-        "submit":          u"Enviar",
-        "sending":         u"A enviar",
-        "successtitle":    u"Ficheiro recebido",
-        "received":        u"Ficheiro recebido !",
-        "another":         u"Enviar outro ficheiro.",
-        "errortitle":      u"Erro",
-        "problem":         u"Ocorreu um erro !",
-        "retry":           u"Tentar novamente.",
-        "discover":        u"Descobrir o endereço desta página"},
-    'pt-br' : {
-        "maintitle":       u"Enviar um arquivo",
-        "submit":          u"Enviar",
-        "sending":         u"Enviando",
-        "successtitle":    u"Arquivo recebido",
-        "received":        u"Arquivo recebido!",
-        "another":         u"Enviar outro arquivo.",
-        "errortitle":      u"Erro",
-        "problem":         u"Ocorreu um erro!",
-        "retry":           u"Tentar novamente.",
-        "discover":        u"Descobrir o endereço desta página"},
-    'ro' : {
-        "maintitle":       u"Trimite un fişier",
-        "submit":          u"Trimite",
-        "sending":         u"Se trimite",
-        "successtitle":    u"Fişier recepţionat",
-        "received":        u"Fişier recepţionat !",
-        "another":         u"Trimite un alt fişier.",
-        "errortitle":      u"Problemă",
-        "problem":         u"A intervenit o problemă !",
-        "retry":           u"Reîncearcă.",
-        "discover":        u"Descoperă adresa acestei pagini"},
-    'ru' : {
-        "maintitle":       u"Отправить файл",
-        "submit":          u"Отправить",
-        "sending":         u"Отправляю",
-        "successtitle":    u"Файл получен",
-        "received":        u"Файл получен !",
-        "another":         u"Отправить другой файл.",
-        "errortitle":      u"Ошибка",
-        "problem":         u"Произошла ошибка !",
-        "retry":           u"Повторить.",
-        "discover":        u"Посмотреть адрес этой страницы"},
-    'sk' : {
-        "maintitle":       u"Pošli súbor",
-        "submit":          u"Pošli",
-        "sending":         u"Posielam",
-        "successtitle":    u"Súbor prijatý",
-        "received":        u"Súbor prijatý !",
-        "another":         u"Poslať ďalší súbor.",
-        "errortitle":      u"Chyba",
-        "problem":         u"Vyskytla sa chyba!",
-        "retry":           u"Skúsiť znova.",
-        "discover":        u"Zisti adresu tejto stránky"},
-    'sl' : {
-        "maintitle":       u"Pošlji datoteko",
-        "submit":          u"Pošlji",
-        "sending":         u"Pošiljam",
-        "successtitle":    u"Datoteka prejeta",
-        "received":        u"Datoteka prejeta !",
-        "another":         u"Pošlji novo datoteko.",
-        "errortitle":      u"Napaka",
-        "problem":         u"Prišlo je do napake !",
-        "retry":           u"Poizkusi ponovno.",
-        "discover":        u"Poišči naslov na tej strani"},
-    'sr' : {
-        "maintitle":       u"Pošalji fajl",
-        "submit":          u"Pošalji",
-        "sending":         u"Šaljem",
-        "successtitle":    u"Fajl primljen",
-        "received":        u"Fajl primljen !",
-        "another":         u"Pošalji još jedan fajl.",
-        "errortitle":      u"Problem",
-        "problem":         u"Desio se problem !",
-        "retry":           u"Pokušaj ponovo.",
-        "discover":        u"Otkrij adresu ove stranice"},
-    'sv' : {
-        "maintitle":       u"Skicka en fil",
-        "submit":          u"Skicka",
-        "sending":         u"Skickar...",
-        "successtitle":    u"Fil mottagen",
-        "received":        u"Fil mottagen !",
-        "another":         u"Skicka en fil till.",
-        "errortitle":      u"Fel",
-        "problem":         u"Det har uppstått ett fel !",
-        "retry":           u"Försök igen.",
-        "discover":        u"Ta reda på adressen till denna sida"},
-    'tr' : {
-        "maintitle":       u"Dosya gönder",
-        "submit":          u"Gönder",
-        "sending":         u"Gönderiliyor...",
-        "successtitle":    u"Gönderildi",
-        "received":        u"Gönderildi",
-        "another":         u"Başka bir dosya gönder.",
-        "errortitle":      u"Problem.",
-        "problem":         u"Bir problem oldu !",
-        "retry":           u"Yeniden dene.",
-        "discover":        u"Bu sayfanın adresini bul"},
-    'zh-cn' : {
-        "maintitle":       u"发送文件",
-        "submit":          u"发送",
-        "sending":         u"发送中",
-        "successtitle":    u"文件已收到",
-        "received":        u"文件已收到！",
-        "another":         u"发送另一个文件。",
-        "errortitle":      u"问题",
-        "problem":         u"出现问题！",
-        "retry":           u"重试。",
-        "discover":        u"查看本页面的地址"},
-    'zh-tw' : {
-        "maintitle":       u"上傳檔案",
-        "submit":          u"上傳",
-        "sending":         u"傳送中...",
-        "successtitle":    u"已收到檔案",
-        "received":        u"已收到檔案！",
-        "another":         u"上傳另一個檔案。",
-        "errortitle":      u"錯誤",
-        "problem":         u"出現錯誤！",
-        "retry":           u"重試。",
-        "discover":        u"查閱本網頁的網址"}
 }  # Ends default_localisations dictionary.
 
 

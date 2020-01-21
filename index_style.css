@@ -23,26 +23,64 @@ h1 {
 }
 
 #upload-container {
-    height: 64px;
+    height: max-content;
     background-color: #ED9;
     border-radius: 10px 0 0 10px;
-    padding: 6px;
+    padding: 0 0 0 6px;
     position:fixed;
-    right: -70px;
+    top: 8px;
+    right: 0px;
+    transform: translateX(110px);
     z-index: 2;
-    transition: all 0.2s;
+    transition: all 0.1s;
     box-shadow: 5px 5px 6px #9999;
     display: flex;
-    align-items: center;
+    /*align-items:center;*/
 }
 
 #upload-container:hover {
-    right: 0px;
-    background-color: #EEE;
+    transform: translateX(0);
+}
+
+#upload-links-container {
+    margin: 0;
+    padding: 0;
+    background-color: #0000;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+#upload-links-container ul {
+    margin: 0 0 0 10px;
+    padding: 0;
+    list-style-type: none;
+}
+
+.upload-link:link, .upload-link:visited {
+    padding: 4px;
+    width: 100%;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    filter: saturate(0.4);
+    opacity: 0.5;
+}
+
+.upload-link:hover {
+    opacity: 1;
+    filter: saturate(1.2);
+    font-weight: bold;
+    border-radius: 8px 0 0 8px;
+    transform: translateX(-6px);
+    transition: transform 0.1s;
 }
 
 #upload-text {
     width:70px;
+    margin: auto;
     word-wrap: break-word;
     overflow: wrap;
     display: inline-block;
@@ -51,7 +89,7 @@ h1 {
 }
 
 #upload-arrow {
-    /*height: 64px;*/
+    margin: auto;
     font-size: 32px;
     display: inline-block;
 }
