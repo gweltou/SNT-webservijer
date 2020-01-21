@@ -217,9 +217,9 @@ def update_page():
       <tr>
         <th class="tooltip">URL<span class="tooltiptext">Anv ar fichennaoueg a rank echui&ntilde; gant .html</span></th>
         <th class="tooltip">Oberourien<span class="tooltiptext">Merken &lt;meta name="author" content="..."&gt;</span></th>
+        <th class="tooltip">Titl<span class="tooltiptext">Kavet e vez an elfenno&ugrave; &lt;title&gt;...&lt;/title&gt;</span></th>
         <th class="tooltip">Doctype<span class="tooltiptext">&lt;DOCTYPE!&gt; e penn-kenta&ntilde; an teuliad HTML</span></th>
         <th class="tooltip">Framm HTML<span class="tooltiptext">Kavet e vez ar framm<pre style="text-align:left;">  &lt;html&gt;\n    &lt;head&gt;\n    &lt;/head&gt;\n    &lt;body&gt;\n    &lt;/body&gt;\n  &lt;/html&gt;</pre></span></th>
-        <th class="tooltip">Titl<span class="tooltiptext">Kavet e vez an elfenno&ugrave; &lt;title&gt;...&lt;/title&gt;</span></th>
         <th class="tooltip">Pennad<span class="tooltiptext">Pennado&ugrave; skrid<br>&lt;p&gt;...&lt;/p&gt;</span></th>
         <th class="tooltip">Gerioù<span class="tooltiptext">Niver a gerio&ugrave; en holl pennado&ugrave; skrid</span></th>
         <th class="tooltip">Skeudenn<span class="tooltiptext">Skeudenno&ugrave;<br>&lt;img src="..."&gt;</span></th>
@@ -247,6 +247,11 @@ def update_page():
         else:
             text += "<td style=\"background-color:#FBA\">Goulo</td>"
         
+        if p["title"] != None:
+            text += f"<td>{html.escape(p['title'])}</td>"
+        else:
+            text += "<td style=\"background-color:#FBA\">Titl ebet</td>"
+        
         if p["doctype"]:
             text += "<td style=\"background-color:#99FF99\">Mat</td>"
         else:
@@ -256,11 +261,6 @@ def update_page():
             text += "<td style=\"background-color:#99FF99\">Mat</td>"
         else:
             text += "<td style=\"background-color:#FBA\">Kudenn</td>"
-        
-        if p["title"] != None:
-            text += f"<td>{html.escape(p['title'])}</td>"
-        else:
-            text += "<td style=\"background-color:#FBA\">Titl ebet</td>"
         
         text += f"<td>{p['number_p']}</td>"
         
