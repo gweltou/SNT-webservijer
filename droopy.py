@@ -32,7 +32,7 @@ import socket
 import base64
 import functools
 
-from my_html_parser import *
+from update_index import *
 
 
 def _decode_str_if_py2(inputstr, encoding='utf-8'):

@@ -7,6 +7,7 @@ import html
 
 
 ROOT_FOLDER = "pajennou"
+NOTES_FILE = "evezhiadennou.txt"
 UPLOAD_SERVERS = {  "gwenn1": "8000",
                     "gwenn2": "8001",
                     "ruz1"  : "8002",
@@ -32,7 +33,6 @@ HTML_HEADER = """
   <title>Lec'hienn Web an eilveidi</title>
   <meta charset="UTF-8">
   
-
   <link rel="stylesheet" type="text/css" href="index_style.css">
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans|Special+Elite|Ubuntu&display=swap" rel="stylesheet"> 
 </head>
@@ -55,13 +55,11 @@ def list_files_in(directory, depth=2):
     return list_files
 
 
-def list_files_by_subdirs(directory):
-    files = list_files_in(directory)
+def list_files_by_subdirs(files_list):
     subdir = []
-    
     dirname = ""
     content = []
-    for f in files:
+    for f in files_list:
         d = f.split(os.path.sep)[1]
         if d != dirname:
             if content: subdir.append(content)
@@ -91,6 +89,8 @@ def filter_out_script_tag(filename):
 
 def parse_html_file(filename):
     d = dict()
+    d["filename"] = filename
+    d["group"] = filename.split(os.path.sep)[1]
     
     try:
         with open(filename, "r", encoding="utf-8") as f:
@@ -100,7 +100,7 @@ def parse_html_file(filename):
             text = f.read().strip()
     
     # Check for DOCTYPE tag
-    d["doctype"] = True if text.startswith(r"<!DOCTYPE html>") else False
+    d["doctype"] = True if text.startswith("<!DOCTYPE html>") else False
     
     # Check for HTML, HEAD and BODY tags
     d["html_tags"] = True if re.search(r"<html>.*</html>", text, flags=re.DOTALL) else False
@@ -115,7 +115,8 @@ def parse_html_file(filename):
     
     m = re.findall(pattern_author, text)
     if len(m) > 0:
-      d["author"] = m[0].strip()
+      # d["author"] = m[0].strip()
+      d["author"] = tuple(sorted([n.strip().capitalize() for n in m[0].split('&')]))
     else:
       d["author"] = None
     
@@ -134,10 +135,19 @@ def parse_html_file(filename):
     return d
     
 
-def update_page():
+def parse_pages(files):
+    pages = []
+    
+    for f in files:
+        pages.append(parse_html_file(f))
+    
+    return pages
+
+
+def parse_evezhiadennou():
     evezhiadennou = dict()
-    if os.path.exists("evezhiadennou.txt"):
-        with open("evezhiadennou.txt", "r") as f:
+    if os.path.exists(NOTES_FILE):
+        with open(NOTES_FILE, "r") as f:
             lines = f.readlines()
         
         for l in lines:
@@ -145,14 +155,27 @@ def update_page():
             if not l or l.startswith('#'):
                 continue
             strollad, evezhiadenn = l.split(';')
-            evezhiadennou[strollad.strip()] = evezhiadenn.strip()
+            strollad = tuple(sorted([n.strip().capitalize() for n in strollad.split('&')]))
+            evezhiadennou[strollad] = evezhiadenn.strip()
     
-    pages = dict()
-    group_of_files = [[f for f in sub if f.lower().endswith('.html') or f.lower().endswith('.htm')]
-                         for sub in list_files_by_subdirs(ROOT_FOLDER)]
-    for files in group_of_files:
-        for f in files:
-            pages[f] = parse_html_file(f)
+    return evezhiadennou
+
+
+def is_html(filename):
+    return filename.lower().endswith('.html') or filename.lower().endswith('.htm')
+    
+
+def update_index_page():
+    all_files = list_files_in(ROOT_FOLDER)
+    html_files = [f for f in all_files if is_html(f)]
+    group_of_files = [[f for f in sub] for sub in list_files_by_subdirs(html_files)]
+    
+    pages = parse_pages(html_files)
+    file_to_page = dict()
+    for p in pages:
+        file_to_page[p["filename"]] = p
+    
+    evezhiadennou = parse_evezhiadennou()
     
     text = HTML_HEADER
     
@@ -165,11 +188,8 @@ def update_page():
         text += "      <h2 class='group-title {}'>".format(group_name) + group_name + "</h2>\n"
         text += "      <ul>\n"
         for f in sorted(files):
-            if not f.lower().endswith(".html"):
-                continue
-            
             text +=  "        <li>"
-            text += f'<a class="page-title" href="{f}" target="_blank">{pages[f]["title"]}</a><br>'
+            text += f'<a class="page-title" href="{f}" target="_blank">{file_to_page[f]["title"]}</a><br>'
             text +=  "</li>\n"
         
         text += "      </ul>\n"
@@ -211,6 +231,7 @@ def update_page():
     </ul>
     """
     
+    ### DIAGNOSTIC TABLE
     text += """
     <h1>Statistiko&ugrave;</h1>
     <table>
@@ -218,7 +239,7 @@ def update_page():
         <th class="tooltip">URL<span class="tooltiptext">Anv ar fichennaoueg a rank echui&ntilde; gant .html</span></th>
         <th class="tooltip">Oberourien<span class="tooltiptext">Merken &lt;meta name="author" content="..."&gt;</span></th>
         <th class="tooltip">Titl<span class="tooltiptext">Kavet e vez an elfenno&ugrave; &lt;title&gt;...&lt;/title&gt;</span></th>
-        <th class="tooltip">Doctype<span class="tooltiptext">&lt;DOCTYPE!&gt; e penn-kenta&ntilde; an teuliad HTML</span></th>
+        <th class="tooltip">Doctype<span class="tooltiptext">&lt;!DOCTYPE html&gt; e penn-kenta&ntilde; an teuliad HTML</span></th>
         <th class="tooltip">Framm HTML<span class="tooltiptext">Kavet e vez ar framm<pre style="text-align:left;">  &lt;html&gt;\n    &lt;head&gt;\n    &lt;/head&gt;\n    &lt;body&gt;\n    &lt;/body&gt;\n  &lt;/html&gt;</pre></span></th>
         <th class="tooltip">Pennad<span class="tooltiptext">Pennado&ugrave; skrid<br>&lt;p&gt;...&lt;/p&gt;</span></th>
         <th class="tooltip">Gerioù<span class="tooltiptext">Niver a gerio&ugrave; en holl pennado&ugrave; skrid</span></th>
@@ -228,10 +249,10 @@ def update_page():
       </tr>
     """
     
-    for f in sorted(pages):
-        p = pages[f]
+    for f in sorted(all_files):
         text += "<tr>\n"
-        if f.lower().endswith(".html") or f.lower().endswith(".htm"):
+        
+        if is_html(f):
             text += "<td>"
             text += f"<a href=\"{f}\" target=\"_blank\">"
             text += html.escape(f)
@@ -242,36 +263,40 @@ def update_page():
             text += html.escape(f)
             text += "</a></td>\n"
         
-        if p["author"]:
-            text += f'<td style="background-color:#99FF99">{p["author"]}</td>'
-        else:
-            text += "<td style=\"background-color:#FBA\">Goulo</td>"
-        
-        if p["title"] != None:
-            text += f"<td>{html.escape(p['title'])}</td>"
-        else:
-            text += "<td style=\"background-color:#FBA\">Titl ebet</td>"
-        
-        if p["doctype"]:
-            text += "<td style=\"background-color:#99FF99\">Mat</td>"
-        else:
-            text += "<td style=\"background-color:#FBA\">Kudenn</td>"
-        
-        if p["html_tags"] and p["head_tags"] and p["body_tags"]:
-            text += "<td style=\"background-color:#99FF99\">Mat</td>"
-        else:
-            text += "<td style=\"background-color:#FBA\">Kudenn</td>"
-        
-        text += f"<td>{p['number_p']}</td>"
-        
-        text += f"<td>{p['number_words']}</td>"
-        
-        text += f"<td>{p['number_img']}</td>"
-        
-        text += f"<td>{p['number_a']}</td>"
-        
-        if p['author'] in evezhiadennou:
-            text += f"<td>{html.escape(evezhiadennou.get(p['author']))}</td>"
+        if f in file_to_page:
+            p = file_to_page[f]
+            
+            if p["author"]:
+                names = p["author"][0] if len(p["author"]) == 1 else " & ".join(p["author"])
+                text += f'<td style="background-color:#99FF99">{names}</td>'
+            else:
+                text += "<td style=\"background-color:#FBA\">Goulo</td>"
+            
+            if p["title"] != None:
+                text += f"<td>{html.escape(p['title'])}</td>"
+            else:
+                text += "<td style=\"background-color:#FBA\">Titl ebet</td>"
+            
+            if p["doctype"]:
+                text += "<td style=\"background-color:#99FF99\">Mat</td>"
+            else:
+                text += "<td style=\"background-color:#FBA\">Kudenn</td>"
+            
+            if p["html_tags"] and p["head_tags"] and p["body_tags"]:
+                text += "<td style=\"background-color:#99FF99\">Mat</td>"
+            else:
+                text += "<td style=\"background-color:#FBA\">Kudenn</td>"
+            
+            text += f"<td>{p['number_p']}</td>"
+            
+            text += f"<td>{p['number_words']}</td>"
+            
+            text += f"<td>{p['number_img']}</td>"
+            
+            text += f"<td>{p['number_a']}</td>"
+            
+            if p['author'] in evezhiadennou:
+                text += f"<td>{html.escape(evezhiadennou.get(p['author']))}</td>"
         
         text += "</tr>\n"
     
@@ -302,7 +327,5 @@ def update_page():
 
 
 if __name__ == "__main__":
-    update_page()
-    
-    
+    update_index_page()
     
