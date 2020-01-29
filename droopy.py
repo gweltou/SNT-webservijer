@@ -299,7 +299,7 @@ class HTTPUploadHandler(httpserver.BaseHTTPRequestHandler):
                 
             ### ADDED
             self.log_message("updating index page")
-            update_page()
+            update_index_page()
 
             # -- Reply
             if self.publish_files:
