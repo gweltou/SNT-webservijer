@@ -8,29 +8,55 @@ from update_index import *
 
 def dre_anv_html(anviou):
     html_text = ""
-    
-    html_text = "<ul>\n"
+    last_group = None
+    anviou = sorted(anviou, key=lambda f:f[0][2])
     for anv, da_prizian in anviou:
-        html_text += "  <li>" + html.escape(str(anv)) + "</li>\n"
-        html_text += "  <ul>\n"
+        if anv[2] != last_group:
+            if last_group != None:
+                html_text += "</ul>\n"
+            last_group = anv[2]
+            html_text += "  <h2>" + anv[2].capitalize() + "</h2>\n"
+            html_text += "  <ul>\n"
+        html_text += "    <li>" + html.escape("{} ({})".format(anv[0], ' & '.join(anv[1]))) + "</li>\n"
+        html_text += "    <ul>\n"
         for pajenn in da_prizian:
             titl = pajenn[2] if pajenn[2] else "Titl ebet"
-            html_text += "    <li><a src='" + pajenn[3] + "'>" + html.escape(titl) + "</a></li>\n"
+            html_text += "      <li><a href=\"" + pajenn[3] + "\">" + html.escape(titl) + "</a></li>\n"
         
-        html_text += "  </ul>\n"
+        html_text += "    </ul>\n"
     
     html_text += "</ul>\n"
     
     return html_text
 
 
-def dre_strollad_html():
-    pass
+def dre_strollad_html(groups_dict):
+    html_text = ""
+    strolladou = sorted(groups_dict.keys(), key=lambda f:f[1])
+    last_group = None
+    for s in strolladou:
+        if s[1] != last_group:
+            if last_group != None:
+                html_text += "</ul>\n"
+            last_group = s[1]
+            html_text += "  <h2>" + s[1].capitalize() + "</h2>\n"
+            html_text += "  <ul>\n"
+        group = " & ".join(s[0])
+        title = s[2] if s[2] else "Titl ebet"
+        html_text += "    <li><a href=\"{}\">{}</a> ({})</li>\n".format(s[3], title, html.escape(group))
+        html_text += "    <ul>\n"
+        for anv, strollad, klas in groups_dict[s]:
+            html_text += "      <li>{} ({}) {}</li>\n".format(anv, ' & '.join(strollad), klas.capitalize())
+        
+        html_text += "    </ul>\n"
+    
+    html_text += "</ul>\n"
+    
+    return html_text
 
 
 if __name__ == "__main__":
     strolladou = []
-    
     
     files_list = [f for f in list_files_in(ROOT_FOLDER) if is_html(f)]
     pages = parse_pages(files_list)
@@ -53,6 +79,7 @@ if __name__ == "__main__":
     
     print("Niver a liseidi :", len(liseidi))
     
+    random.shuffle(strolladou)
     
     prizi_anv = []
     prizi_strollad = {}
@@ -80,7 +107,9 @@ if __name__ == "__main__":
             print("   ", anv)
     """
     
-    with open("prizian.html", "w") as f:
+    with open("prizian_dre_lisead.html", "w") as f:
         f.write(dre_anv_html(prizi_anv))
     
-    
+    with open("prizian_dre_strollad.html", "w") as f:
+        f.write(dre_strollad_html(prizi_strollad))
+
