@@ -13,8 +13,9 @@ def dre_anv_html(anviou):
     for anv, da_prizian in anviou:
         html_text += "  <li>" + html.escape(str(anv)) + "</li>\n"
         html_text += "  <ul>\n"
-        for strollad in da_prizian:
-            html_text += "    <li>" + html.escape(str(strollad)) + "</li>\n"
+        for pajenn in da_prizian:
+            titl = pajenn[2] if pajenn[2] else "Titl ebet"
+            html_text += "    <li><a src='" + pajenn[3] + "'>" + html.escape(titl) + "</a></li>\n"
         
         html_text += "  </ul>\n"
     
@@ -48,11 +49,11 @@ if __name__ == "__main__":
     files_list = [f for f in list_files_in(ROOT_FOLDER) if is_html(f)]
     pages = parse_pages(files_list)
     print("Niver a bajennoù :", len(pages))
-    strolladou = [(p["author"], p["group"]) for p in pages]
+    strolladou = [(p["author"], p["group"], p["title"], p["filename"]) for p in pages if p["author"][0] not in ("Laure", "Gweltaz")]
     print("Niver a strolladoù :", len(set(strolladou)))
     
     liseidi = []
-    for anviou, klas in strolladou:
+    for anviou, klas, _, _ in strolladou:
         for anv in anviou:
             liseidi.append((anv, anviou, klas))
     
@@ -85,6 +86,7 @@ if __name__ == "__main__":
             print("   ", anv)
     """
     
-    #print(dre_anv_html(prizi_anv))
+    with open("prizian.html", "w") as f:
+        f.write(dre_anv_html(prizi_anv))
     
     
