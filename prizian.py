@@ -24,33 +24,27 @@ def dre_anv_html(anviou):
     return html_text
 
 
+def dre_strollad_html():
+    pass
+
 
 if __name__ == "__main__":
     strolladou = []
     
-    """
-    klas = None
-    
-    with open(NOTES_FILE, "r") as f:
-        lines = f.readlines()
-    
-    for l in lines:
-        if not l.strip():
-            continue
-        if l.startswith('#'):
-            klas = l[1:].strip()
-        else:
-            anviou = l.split(';')[0]
-            anviou = [s.strip() for s in anviou.split('&')]
-            strolladou.append((tuple(anviou), klas))
-    random.shuffle(strolladou)
-    """
     
     files_list = [f for f in list_files_in(ROOT_FOLDER) if is_html(f)]
     pages = parse_pages(files_list)
     print("Niver a bajennoù :", len(pages))
     strolladou = [(p["author"], p["group"], p["title"], p["filename"]) for p in pages if p["author"][0] not in ("Laure", "Gweltaz")]
-    print("Niver a strolladoù :", len(set(strolladou)))
+    n_strolladou = len(set(strolladou))
+    print("Niver a strolladoù :", n_strolladou)
+    if n_strolladou != len(pages):
+        # Check for duplicates
+        strolladou_sorted = sorted(strolladou)
+        for i in range(1, len(strolladou)):
+            if strolladou_sorted[i][0] == strolladou_sorted[i-1][0]:
+                print(strolladou_sorted[i-1])
+                print(strolladou_sorted[i])
     
     liseidi = []
     for anviou, klas, _, _ in strolladou:
