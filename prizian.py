@@ -6,8 +6,20 @@ import html
 from update_index import *
 
 
+HTML_HEADER = """
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Prizia&ntilde;</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="prizian.css">
+</head>
+<body lang="br">
+"""
+
+
 def dre_anv_html(anviou):
-    html_text = ""
+    html_text = HTML_HEADER
     last_group = None
     anviou = sorted(anviou, key=lambda f:f[0][2])
     for anv, da_prizian in anviou:
@@ -17,8 +29,8 @@ def dre_anv_html(anviou):
             last_group = anv[2]
             html_text += "  <h2>" + anv[2].capitalize() + "</h2>\n"
             html_text += "  <ul>\n"
-        html_text += "    <li>" + html.escape("{} ({})".format(anv[0], ' & '.join(anv[1]))) + "</li>\n"
-        html_text += "    <ul>\n"
+        html_text += "    <li class=\"dropdown\">" + html.escape("{} ({})".format(anv[0], ' & '.join(anv[1]))) + "</li>\n"
+        html_text += "    <ul class=\"dropdown-content\">\n"
         for pajenn in da_prizian:
             titl = pajenn[2] if pajenn[2] else "Titl ebet"
             html_text += "      <li><a href=\"" + pajenn[3] + "\">" + html.escape(titl) + "</a></li>\n"
@@ -26,12 +38,13 @@ def dre_anv_html(anviou):
         html_text += "    </ul>\n"
     
     html_text += "</ul>\n"
+    html_text += "</body></html>"
     
     return html_text
 
 
 def dre_strollad_html(groups_dict):
-    html_text = ""
+    html_text = HTML_HEADER
     strolladou = sorted(groups_dict.keys(), key=lambda f:f[1])
     last_group = None
     for s in strolladou:
@@ -43,14 +56,15 @@ def dre_strollad_html(groups_dict):
             html_text += "  <ul>\n"
         group = " & ".join(s[0])
         title = s[2] if s[2] else "Titl ebet"
-        html_text += "    <li><a href=\"{}\">{}</a> ({})</li>\n".format(s[3], title, html.escape(group))
-        html_text += "    <ul>\n"
+        html_text += "    <li class=\"dropdown\"><a href=\"{}\">{}</a> ({})</li>\n".format(s[3], title, html.escape(group))
+        html_text += "    <ul class=\"dropdown-content\">\n"
         for anv, strollad, klas in groups_dict[s]:
             html_text += "      <li>{} ({}) {}</li>\n".format(anv, ' & '.join(strollad), klas.capitalize())
         
         html_text += "    </ul>\n"
     
     html_text += "</ul>\n"
+    html_text += "</body></html>"
     
     return html_text
 

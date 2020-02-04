@@ -100,7 +100,7 @@ def parse_html_file(filename):
             text = f.read().strip()
     
     # Check for DOCTYPE tag
-    d["doctype"] = True if text.startswith("<!DOCTYPE html>") else False
+    d["doctype"] = True if re.search(r"^<!DOCTYPE html>", text) else False
     
     # Check for HTML, HEAD and BODY tags
     d["html_tags"] = True if re.search(r"<html>.*</html>", text, flags=re.DOTALL) else False
@@ -226,8 +226,17 @@ def update_index_page():
       <li class="tooltip"><a href="https://html5-editor.net/" target="_blank">html5-editor.net</a><span class="tooltiptext">Evit skriva&ntilde; HTML nemetken</span></li>
       <li class="tooltip"><a href="https://liveweave.com/" target="_blank">liveweave.com</a><span class="tooltiptext">Evit skriva&ntilde; HTML ha CSS, labourat war 2 urzhiataer posupl</span></li>
       <li class="tooltip"><a href="https://fonts.google.com/" target="_blank">Google Fonts</a><span class="tooltiptext">Stilo&ugrave; skritur Google da zibab (CSS)</span></li>
-      <li class="tooltip"><a href="https://www.w3schools.com/cssref/css_colors.asp">Livio&ugrave; CSS</a><span class="tooltiptext">Evit dibab livio&ugrave;</span></li>
+      <li class="tooltip"><a href="https://www.w3schools.com/cssref/css_colors.asp" target="_blank">Livio&ugrave; CSS</a><span class="tooltiptext">Evit dibab livio&ugrave;</span></li>
       <li class="tooltip"><a id="kaoz-link" target="_blank" href="#">Kaoz</a><span class="tooltiptext">Chat lec'hel enlinenn home-made</span></li>
+    </ul>
+    """
+    
+    ### Priziañ
+    if os.path.exists("prizian_dre_lisead.html"):
+        text += """
+    <h1>Prizia&ntilde;</h1>
+    <ul>
+      <li><a href="prizian_dre_lisead.html" target="_blank">Piv a prizio peseurt strollad ?</a></li>
     </ul>
     """
     

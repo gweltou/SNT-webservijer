@@ -2,8 +2,8 @@
 
 cd /home/pi/SNT-webservijer
 
-echo "executing: python3 my_html_parser.py"
-python3 my_html_parser.py
+echo "executing: python3 update_index.py"
+python3 update_index.py
 
 echo "executing: sudo python3 -m http.server 80 &"
 sudo python3 -m http.server 80 &
