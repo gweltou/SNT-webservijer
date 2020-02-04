@@ -148,14 +148,14 @@ h1 {
     background-image: linear-gradient(to right, #29EF, #FFF0);
 }
 
-#kenteliou, #ostilhou {
+.liammou {
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.1em;
     line-height: 1.3em;
     margin-bottom: 32px;
 }
 
-#ostilhou li, #kenteliou li {
+.liammou li {
     width:max-content;
 }
 

@@ -213,16 +213,19 @@ def update_index_page():
   </div>
 """
     
-    # Ostilhoù
+    ### Kenteliou
     text += """
     <h1>Kentelioù</h1>
-    <ul id="kenteliou">
+    <ul class="liammou">
       <li><a href="HTML.html" target="_blank">Ar gentel HTML e brezhoneg</a></li>
       <li><a href="CSS.html" target="_blank">Ar gentel CSS e brezhoneg</a></li>
       <li>Evit mon pelloc'h gant HTML ha CSS (e saozneg) : <a href="https://www.w3schools.com/" target="_blank">www.w3school.com</a></li>
-    </ul>
+    </ul>"""
+    
+    ### Ostilhoù
+    text += """
     <h1>Ostilhoù</h1>
-    <ul id="ostilhou">
+    <ul class="liammou">
       <li class="tooltip"><a href="https://html5-editor.net/" target="_blank">html5-editor.net</a><span class="tooltiptext">Evit skriva&ntilde; HTML nemetken</span></li>
       <li class="tooltip"><a href="https://liveweave.com/" target="_blank">liveweave.com</a><span class="tooltiptext">Evit skriva&ntilde; HTML ha CSS, labourat war 2 urzhiataer posupl</span></li>
       <li class="tooltip"><a href="https://fonts.google.com/" target="_blank">Google Fonts</a><span class="tooltiptext">Stilo&ugrave; skritur Google da zibab (CSS)</span></li>
@@ -235,7 +238,7 @@ def update_index_page():
     if os.path.exists("prizian_dre_lisead.html"):
         text += """
     <h1>Prizia&ntilde;</h1>
-    <ul>
+    <ul class="liammou">
       <li><a href="prizian_dre_lisead.html" target="_blank">Piv a prizio peseurt strollad ?</a></li>
     </ul>
     """
