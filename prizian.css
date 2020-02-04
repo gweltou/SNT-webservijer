@@ -1,0 +1,17 @@
+.dropdown {
+  width: max-content;
+}
+
+.dropdown-content {
+  display: none;
+}
+
+.dropdown-content:hover {
+  display: block;
+  width: max-content;
+}
+
+.dropdown:hover + .dropdown-content {
+  display: block;
+  width: max-content;
+}
